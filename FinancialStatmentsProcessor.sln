@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialStatmentsProcessor", "FinancialStatmentsProcessor\FinancialStatmentsProcessor.csproj", "{7C6AF2CC-89DE-42AD-A65A-0394A1CF4910}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSP.Common", "FSP.Common\FSP.Common.csproj", "{E42B15BC-0C71-4100-B9BF-4462780C9311}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSP.DataAccess", "FSP.DataAccess\FSP.DataAccess.csproj", "{5626C2E3-C6AE-44DF-A932-2329BD01FF05}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C6AF2CC-89DE-42AD-A65A-0394A1CF4910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C6AF2CC-89DE-42AD-A65A-0394A1CF4910}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C6AF2CC-89DE-42AD-A65A-0394A1CF4910}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C6AF2CC-89DE-42AD-A65A-0394A1CF4910}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E42B15BC-0C71-4100-B9BF-4462780C9311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E42B15BC-0C71-4100-B9BF-4462780C9311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E42B15BC-0C71-4100-B9BF-4462780C9311}.Release|Any CPU.ActiveCfg = Release|Any CPU
