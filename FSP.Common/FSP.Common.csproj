@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E42B15BC-0C71-4100-B9BF-4462780C9311}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FSP.Common</RootNamespace>
+    <AssemblyName>FSP.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionState.cs" />
+    <Compile Include="BaseClasses\BaseClass.cs" />
+    <Compile Include="Constants\Administration\AccessListConstants.cs" />
+    <Compile Include="Constants\Administration\AppYearConstants.cs" />
+    <Compile Include="Constants\Administration\GroupConstants.cs" />
+    <Compile Include="Constants\Administration\PermissionConstants.cs" />
+    <Compile Include="Constants\Administration\UserConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\BehaviorJudgmentConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\BehaviourConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\CompanyConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SectorConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SisterCompanyConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SubsidiaryCompanyConstants.cs" />
+    <Compile Include="Constants\Connections\AppreciationConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\ConnectionsMetaConstants.cs" />
+    <Compile Include="Constants\Connections\ExtraConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\FinalConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\InitialConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\RestrictedConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\UnderStudyingConnectionsConstants.cs" />
+    <Compile Include="Constants\Connections\UnRestrictedConnectionsConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCollectionConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCustomCollectionConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCustomSubCollectionConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatMetaConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatSubCollectionConstants.cs" />
+    <Compile Include="Entites\Administration\AccessList.cs" />
+    <Compile Include="Entites\Administration\AppYear.cs" />
+    <Compile Include="Entites\Administration\Group.cs" />
+    <Compile Include="Entites\Administration\Permission.cs" />
+    <Compile Include="Entites\Administration\User.cs" />
+    <Compile Include="Entites\CompanyAdministration\BehaviorJudgment.cs" />
+    <Compile Include="Entites\CompanyAdministration\Behaviour.cs" />
+    <Compile Include="Entites\CompanyAdministration\Company.cs" />
+    <Compile Include="Entites\CompanyAdministration\Sector.cs" />
+    <Compile Include="Entites\CompanyAdministration\SisterCompany.cs" />
+    <Compile Include="Entites\CompanyAdministration\SubsidiaryCompany.cs" />
+    <Compile Include="Entites\Connections\AppreciationConnections.cs" />
+    <Compile Include="Entites\Connections\ConnectionsMeta.cs" />
+    <Compile Include="Entites\Connections\ExtraConnections.cs" />
+    <Compile Include="Entites\Connections\FinalConnections.cs" />
+    <Compile Include="Entites\Connections\InitialConnections.cs" />
+    <Compile Include="Entites\Connections\RestrictedConnections.cs" />
+    <Compile Include="Entites\Connections\UnderStudyingConnections.cs" />
+    <Compile Include="Entites\Connections\UnRestrictedConnections.cs" />
+    <Compile Include="Entites\Zakat\ZakatCollection.cs" />
+    <Compile Include="Entites\Zakat\ZakatCustomCollection.cs" />
+    <Compile Include="Entites\Zakat\ZakatCustomSubCollection.cs" />
+    <Compile Include="Entites\Zakat\ZakatMeta.cs" />
+    <Compile Include="Entites\Zakat\ZakatSubCollection.cs" />
+    <Compile Include="Enums\ActionStatusEnum.cs" />
+    <Compile Include="Enums\LanguagesEnum.cs" />
+    <Compile Include="Enums\LoginEnum.cs" />
+    <Compile Include="Enums\LogLevelEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\LoggingUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

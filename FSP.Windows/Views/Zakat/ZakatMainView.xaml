@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="FSP.Windows.Views.Zakat.ZakatMainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="600" d:DesignWidth="600" Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+            <StackPanel Orientation="Horizontal">
+            <telerik:RadExpander Name="exp_MainInformation" telerik:StyleManager.Theme="Expression_Dark" Width="260" HorizontalAlignment="Left" >
+                <telerik:RadExpander.Header>
+                    <Border BorderBrush="White" Width="225" BorderThickness="2">
+                        <TextBlock Text="المعلومات الأساسية" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </Border>
+                </telerik:RadExpander.Header>
+            <StackPanel Name="stkMainInforamtion">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="القطاع"  Foreground="White" Width="100" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadComboBox Width="150" Height="20" Name="cmbo_Sector" SelectionChanged="cmbo_Sector_SelectionChanged_1" DisplayMemberPath="Name" SelectedIndex="0" telerik:StyleManager.Theme="Expression_Dark"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="الشركة"  Foreground="White" Width="100" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadComboBox Width="150" Height="20" Name="cmbo_Company" SelectionChanged="cmbo_Company_SelectionChanged_1" DisplayMemberPath="Name" SelectedIndex="0" telerik:StyleManager.Theme="Expression_Dark"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="رأس المال"  Foreground="White" Width="100" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox Width="150" Height="20" Name="txt_Capital"  telerik:StyleManager.Theme="Expression_Dark"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="تأسيس الشركة"  Foreground="White" Width="100" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox Width="150" Height="20" Name="txt_EstablishYear"  telerik:StyleManager.Theme="Expression_Dark"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="الشركات التابعة"  Foreground="White" Width="100" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadComboBox Width="150" Height="20" Name="cmbo_SubsidiaryCompany" DisplayMemberPath="Name" SelectedIndex="0" telerik:StyleManager.Theme="Expression_Dark"/>
+                </StackPanel>            
+        </StackPanel>
+            </telerik:RadExpander>
+            <telerik:RadExpander Name="exp_Roboot" telerik:StyleManager.Theme="Expression_Dark" Width="260" HorizontalAlignment="Left" >
+                <telerik:RadExpander.Header>
+                    <Border BorderBrush="White" Width="225" BorderThickness="2">
+                        <TextBlock Text="الربوط" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </Border>
+                </telerik:RadExpander.Header>
+                <StackPanel Name="stk_Roboot">
+                    <!--Robooooot-->
+                </StackPanel>
+            </telerik:RadExpander>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <telerik:RadExpander Name="exp_Zakat" telerik:StyleManager.Theme="Expression_Dark" Width="260" HorizontalAlignment="Left" >
+                        <telerik:RadExpander.Header>
+                            <Border BorderBrush="White" Width="225" BorderThickness="2">
+                                <TextBlock Text="الزكاة" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </Border>
+                        </telerik:RadExpander.Header>
+                        <StackPanel Name="stk_Zakat">
+                            <!--Robooooot-->
+                        </StackPanel>
+                    </telerik:RadExpander>
+
+                    <telerik:RadExpander Name="exp_Objection" telerik:StyleManager.Theme="Expression_Dark" Width="260" HorizontalAlignment="Left" >
+                        <telerik:RadExpander.Header>
+                            <Border BorderBrush="White" Width="225" BorderThickness="2">
+                                <TextBlock Text="الإعتراض" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </Border>
+                        </telerik:RadExpander.Header>
+                        <StackPanel Name="stk_Objection">
+                            <!--Robooooot-->
+                        </StackPanel>
+                    </telerik:RadExpander>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadExpander Name="exp_Test" telerik:StyleManager.Theme="Expression_Dark" Width="260" HorizontalAlignment="Left" >
+                            <telerik:RadExpander.Header>
+                                <Border BorderBrush="White" Width="225" BorderThickness="2">
+                                    <TextBlock Text="الاقرار و الفحص" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                </Border>
+                            </telerik:RadExpander.Header>
+                            <StackPanel Name="stk_Test">
+                                <!--Robooooot-->
+                            </StackPanel>
+                        </telerik:RadExpander>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

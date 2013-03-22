@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5626C2E3-C6AE-44DF-A932-2329BD01FF05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FSP.DataAccess</RootNamespace>
+    <AssemblyName>FSP.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Enterprise Library 5.0\Bin\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseClasses\RepositoryBaseClass.cs" />
+    <Compile Include="Constants\Administration\AccessListRepositoryConstants.cs" />
+    <Compile Include="Constants\Administration\AppYearRepositoryConstants.cs" />
+    <Compile Include="Constants\Administration\GroupRepositoryConstants.cs" />
+    <Compile Include="Constants\Administration\PermissionRepositoryConstants.cs" />
+    <Compile Include="Constants\Administration\UserRepositoryConstants.cs" />
+    <Compile Include="Constants\Common\CommonConstants.cs" />
+    <Compile Include="Constants\Common\LocalizationConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\BehaviorJudgmentRepositoryConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\BehaviourRepositoryConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\CompanyRepositoryConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SectorRepositoryConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SisterCompanyRepositoryConstants.cs" />
+    <Compile Include="Constants\CompanyAdministration\SubsidiaryCompanyRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\AppreciationConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCollectionRepositoryConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCustomCollectionRepositoryConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatCustomSubCollectionRepositoryConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatMetaRepositoryConstants.cs" />
+    <Compile Include="Constants\Zakat\ZakatSubCollectionRepositoryConstants.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLImlementation\Administration\AccessListRepository.cs" />
+    <Compile Include="SQLImlementation\Administration\AppYearRepository.cs" />
+    <Compile Include="SQLImlementation\Administration\GroupRepository.cs" />
+    <Compile Include="SQLImlementation\Administration\PermissionRepository.cs" />
+    <Compile Include="SQLImlementation\Administration\UserRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\BehaviorJudgmentRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\BehaviourRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\CompanyRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\SectorRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\SisterCompanyRepository.cs" />
+    <Compile Include="SQLImlementation\CompanyAdministration\SubsidiaryCompanyRepository.cs" />
+    <Compile Include="SQLImlementation\Zakat\ZakatCollectionRepository.cs" />
+    <Compile Include="SQLImlementation\Zakat\ZakatCustomCollectionRepository.cs" />
+    <Compile Include="SQLImlementation\Zakat\ZakatCustomSubCollectionRepository.cs" />
+    <Compile Include="SQLImlementation\Zakat\ZakatMetaRepository.cs" />
+    <Compile Include="SQLImlementation\Zakat\ZakatSubCollectionRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FSP.Common\FSP.Common.csproj">
+      <Project>{e42b15bc-0c71-4100-b9bf-4462780c9311}</Project>
+      <Name>FSP.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

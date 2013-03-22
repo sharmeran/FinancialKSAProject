@@ -1,0 +1,11 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Views="clr-namespace:FSP.Windows.Views" x:Class="FSP.Windows.AppWindow"
+        Title="AppWindow" FlowDirection="RightToLeft"  Background="Black" WindowState="Maximized">
+    <Grid>
+
+        <Views:MainPage HorizontalAlignment="Left" />
+
+    </Grid>
+</Window>
