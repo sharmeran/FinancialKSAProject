@@ -74,6 +74,13 @@
     <Compile Include="Constants\CompanyAdministration\SisterCompanyRepositoryConstants.cs" />
     <Compile Include="Constants\CompanyAdministration\SubsidiaryCompanyRepositoryConstants.cs" />
     <Compile Include="Constants\Connections\AppreciationConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\ConnectionsMetaRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\ExtraConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\FinalConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\InitialConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\RestrictedConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\UnderStudyingConnectionsRepositoryConstants.cs" />
+    <Compile Include="Constants\Connections\UnRestrictedConnectionsRepositoryConstants.cs" />
     <Compile Include="Constants\Zakat\ZakatCollectionRepositoryConstants.cs" />
     <Compile Include="Constants\Zakat\ZakatCustomCollectionRepositoryConstants.cs" />
     <Compile Include="Constants\Zakat\ZakatCustomSubCollectionRepositoryConstants.cs" />
