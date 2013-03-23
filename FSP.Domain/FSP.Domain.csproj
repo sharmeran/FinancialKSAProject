@@ -54,6 +54,14 @@
     <Compile Include="Domains\CompanyAdministration\SectorDomain.cs" />
     <Compile Include="Domains\CompanyAdministration\SisterCompanyDomain.cs" />
     <Compile Include="Domains\CompanyAdministration\SubsidiaryCompanyDomain.cs" />
+    <Compile Include="Domains\Connections\AppreciationConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\ConnectionsMetaDomain.cs" />
+    <Compile Include="Domains\Connections\ExtraConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\FinalConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\InitialConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\RestrictedConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\UnderStudyingConnectionsDomain.cs" />
+    <Compile Include="Domains\Connections\UnRestrictedConnectionsDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomSubCollectionDomain.cs" />
@@ -71,9 +79,7 @@
       <Name>FSP.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domains\Connections\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

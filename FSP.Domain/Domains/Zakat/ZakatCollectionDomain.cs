@@ -18,7 +18,6 @@ namespace FSP.Domain.Domains.Zakat
             DBRepository = new ZakatCollectionRepository();
         }
 
-
         public override void Add(ZakatCollection entity)
         {
             DBRepository.Insert(entity, ActionState);

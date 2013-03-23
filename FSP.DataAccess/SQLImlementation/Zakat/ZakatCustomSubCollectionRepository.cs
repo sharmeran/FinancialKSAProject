@@ -66,7 +66,7 @@ namespace FSP.DataAccess.SQLImlementation.Zakat
             {
                 cmd = database.GetStoredProcCommand(ZakatCustomSubCollectionRepositoryConstants.SP_Insert);
                 database.AddInParameter(cmd, ZakatCustomSubCollectionRepositoryConstants.Value, DbType.Decimal, entity.Value);
-                database.AddInParameter(cmd, ZakatCustomSubCollectionRepositoryConstants.Year, DbType.Int32, entity.Value);
+                database.AddInParameter(cmd, ZakatCustomSubCollectionRepositoryConstants.Year, DbType.Int32, entity.Year);
                 database.AddInParameter(cmd, ZakatCustomSubCollectionRepositoryConstants.ZakatMetaID, DbType.Int32, entity.ZakatMetaID);
                 database.AddInParameter(cmd, ZakatCustomSubCollectionRepositoryConstants.CompanyID, DbType.Int32, entity.CompanyID);
 

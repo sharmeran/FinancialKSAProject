@@ -19,6 +19,56 @@ namespace FSP.Common.Entites.Connections
         int underStudyingNumber;
         int initialConnectionNumber;
 
+        List<RestrictedConnections> restrictedConnectionsList;
+        List<UnRestrictedConnections> unRestrictedConnectionsList;
+        List<ExtraConnections> extraConnectionsList;
+        List<AppreciationConnections> appreciationConnectionsList;
+        List<FinalConnections> finalConnectionsList;
+        List<UnderStudyingConnections> underStudyingConnectionsList;
+        List<InitialConnections> initialConnectionsList;
+
+        public List<InitialConnections> InitialConnectionsList
+        {
+            get { return initialConnectionsList; }
+            set { initialConnectionsList = value; }
+        }
+
+        public List<UnderStudyingConnections> UnderStudyingConnectionsList
+        {
+            get { return underStudyingConnectionsList; }
+            set { underStudyingConnectionsList = value; }
+        }
+
+        public List<FinalConnections> FinalConnectionsList
+        {
+            get { return finalConnectionsList; }
+            set { finalConnectionsList = value; }
+        }
+
+        public List<AppreciationConnections> AppreciationConnectionsList
+        {
+            get { return appreciationConnectionsList; }
+            set { appreciationConnectionsList = value; }
+        }
+
+        public List<ExtraConnections> ExtraConnectionsList
+        {
+            get { return extraConnectionsList; }
+            set { extraConnectionsList = value; }
+        }
+
+        public List<UnRestrictedConnections> UnRestrictedConnectionsList
+        {
+            get { return unRestrictedConnectionsList; }
+            set { unRestrictedConnectionsList = value; }
+        }
+
+        public List<RestrictedConnections> RestrictedConnectionsList
+        {
+            get { return restrictedConnectionsList; }
+            set { restrictedConnectionsList = value; }
+        }
+
         public int InitialConnectionNumber
         {
             get { return initialConnectionNumber; }

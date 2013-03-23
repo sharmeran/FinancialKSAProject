@@ -98,6 +98,14 @@
     <Compile Include="SQLImlementation\CompanyAdministration\SectorRepository.cs" />
     <Compile Include="SQLImlementation\CompanyAdministration\SisterCompanyRepository.cs" />
     <Compile Include="SQLImlementation\CompanyAdministration\SubsidiaryCompanyRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\AppreciationConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\ConnectionsMetaRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\ExtraConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\FinalConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\InitialConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\RestrictedConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\UnderStudyingConnectionsRepository.cs" />
+    <Compile Include="SQLImlementation\Connections\UnRestrictedConnectionsRepository.cs" />
     <Compile Include="SQLImlementation\Zakat\ZakatCollectionRepository.cs" />
     <Compile Include="SQLImlementation\Zakat\ZakatCustomCollectionRepository.cs" />
     <Compile Include="SQLImlementation\Zakat\ZakatCustomSubCollectionRepository.cs" />
