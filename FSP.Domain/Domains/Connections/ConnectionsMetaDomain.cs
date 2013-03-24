@@ -21,6 +21,50 @@ namespace FSP.Domain.Domains.Connections
         public override void Add(ConnectionsMeta entity)
         {
             DBRepository.Insert(entity, ActionState);
+            AppreciationConnectionsRepository appreciationConnectionsRepository = new AppreciationConnectionsRepository();
+            ExtraConnectionsRepository extraConnectionsRepository = new ExtraConnectionsRepository();
+            FinalConnectionsRepository finalConnectionsRepository = new FinalConnectionsRepository();
+            InitialConnectionsRepository initialConnectionsRepository = new InitialConnectionsRepository();
+            RestrictedConnectionsRepository restrictedConnectionsRepository = new RestrictedConnectionsRepository();
+            UnderStudyingConnectionsRepository underStudyingConnectionsRepository = new UnderStudyingConnectionsRepository();
+            UnRestrictedConnectionsRepository unRestrictedConnectionsRepository = new UnRestrictedConnectionsRepository();
+            
+
+            foreach(AppreciationConnections appreciationConnections in entity.AppreciationConnectionsList) 
+            {
+                appreciationConnectionsRepository.Insert(appreciationConnections, ActionState);
+            }
+
+            foreach (ExtraConnections extraConnections in entity.ExtraConnectionsList)
+            {
+                extraConnectionsRepository.Insert(extraConnections, ActionState);
+            }
+
+            foreach (FinalConnections finalConnections in entity.FinalConnectionsList)
+            {
+                finalConnectionsRepository.Insert(finalConnections, ActionState);
+            }
+
+            foreach (InitialConnections initialConnections in entity.InitialConnectionsList)
+            {
+                initialConnectionsRepository.Insert(initialConnections, ActionState);
+            }
+
+            foreach (RestrictedConnections restrictedConnections in entity.RestrictedConnectionsList)
+            {
+                restrictedConnectionsRepository.Insert(restrictedConnections, ActionState);
+            }
+
+            foreach (UnderStudyingConnections underStudyingConnections in entity.UnderStudyingConnectionsList)
+            {
+                underStudyingConnectionsRepository.Insert(underStudyingConnections, ActionState);
+            }
+
+            foreach (UnRestrictedConnections unRestrictedConnections in entity.UnRestrictedConnectionsList)
+            {
+                unRestrictedConnectionsRepository.Insert(unRestrictedConnections, ActionState);
+            }
+
         }
 
         public override void Delete(ConnectionsMeta entity)
@@ -28,28 +72,31 @@ namespace FSP.Domain.Domains.Connections
             throw new NotImplementedException();
         }
 
-        public void DeleteByConnectionsMeta(int connectionsMetaID)
+        public void DeleteByZakatMainID(ConnectionsMeta entity)
         {
+            ConnectionsMetaRepository connectionsMetaRepository = new ConnectionsMetaRepository();
+            connectionsMetaRepository.DeleteByZakatMainID(entity.ZakatMainID, ActionState);
+
             AppreciationConnectionsRepository appreciationConnectionsRepository = new AppreciationConnectionsRepository();
-            appreciationConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            appreciationConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             ExtraConnectionsRepository extraConnectionsRepository = new ExtraConnectionsRepository();
-            extraConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            extraConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             FinalConnectionsRepository finalConnectionsRepository = new FinalConnectionsRepository();
-            finalConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            finalConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             InitialConnectionsRepository initialConnectionsRepository = new InitialConnectionsRepository();
-            initialConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            initialConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             RestrictedConnectionsRepository restrictedConnectionsRepository = new RestrictedConnectionsRepository();
-            restrictedConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            restrictedConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             UnderStudyingConnectionsRepository underStudyingConnectionsRepository = new UnderStudyingConnectionsRepository();
-            underStudyingConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            underStudyingConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
             UnRestrictedConnectionsRepository unRestrictedConnectionsRepository = new UnRestrictedConnectionsRepository();
-            unRestrictedConnectionsRepository.DeleteByConnectionMetaID(connectionsMetaID, ActionState);
+            unRestrictedConnectionsRepository.DeleteByConnectionMetaID(entity.ID, ActionState);
 
 
         }
