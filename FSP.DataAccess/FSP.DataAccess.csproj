@@ -65,6 +65,12 @@
     <Compile Include="Constants\Administration\GroupRepositoryConstants.cs" />
     <Compile Include="Constants\Administration\PermissionRepositoryConstants.cs" />
     <Compile Include="Constants\Administration\UserRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\AdoptionMetaRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\ISAdoptionRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\LateOfAdoptionRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\NotAdoptionRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\TestRepositoryConstants.cs" />
+    <Compile Include="Constants\Adoptions\ViolationAdoptionRepositoryConstants.cs" />
     <Compile Include="Constants\Common\CommonConstants.cs" />
     <Compile Include="Constants\Common\LocalizationConstants.cs" />
     <Compile Include="Constants\CompanyAdministration\BehaviorJudgmentRepositoryConstants.cs" />
@@ -118,7 +124,9 @@
       <Name>FSP.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SQLImlementation\Adoptions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
