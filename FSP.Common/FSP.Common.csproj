@@ -67,6 +67,12 @@
     <Compile Include="Constants\Administration\GroupConstants.cs" />
     <Compile Include="Constants\Administration\PermissionConstants.cs" />
     <Compile Include="Constants\Administration\UserConstants.cs" />
+    <Compile Include="Constants\Adoptions\AdoptionMetaConstants.cs" />
+    <Compile Include="Constants\Adoptions\ISAdoptionConstants.cs" />
+    <Compile Include="Constants\Adoptions\LateOfAdoptionConstants.cs" />
+    <Compile Include="Constants\Adoptions\NotAdoptionConstants.cs" />
+    <Compile Include="Constants\Adoptions\TestConstants.cs" />
+    <Compile Include="Constants\Adoptions\ViolationAdoptionConstants.cs" />
     <Compile Include="Constants\CompanyAdministration\BehaviorJudgmentConstants.cs" />
     <Compile Include="Constants\CompanyAdministration\BehaviourConstants.cs" />
     <Compile Include="Constants\CompanyAdministration\CompanyConstants.cs" />
@@ -91,6 +97,12 @@
     <Compile Include="Entites\Administration\Group.cs" />
     <Compile Include="Entites\Administration\Permission.cs" />
     <Compile Include="Entites\Administration\User.cs" />
+    <Compile Include="Entites\Adoptions\AdoptionMeta.cs" />
+    <Compile Include="Entites\Adoptions\ISAdoption.cs" />
+    <Compile Include="Entites\Adoptions\LateOfAdoption.cs" />
+    <Compile Include="Entites\Adoptions\NotAdoption.cs" />
+    <Compile Include="Entites\Adoptions\Test.cs" />
+    <Compile Include="Entites\Adoptions\ViolationAdoption.cs" />
     <Compile Include="Entites\CompanyAdministration\BehaviorJudgment.cs" />
     <Compile Include="Entites\CompanyAdministration\Behaviour.cs" />
     <Compile Include="Entites\CompanyAdministration\Company.cs" />
