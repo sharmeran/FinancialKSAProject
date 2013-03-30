@@ -10,7 +10,7 @@ namespace FSP.Common.Entites.Adoptions
    public  class Test :BaseClass
     {
         int iD;
-        int adoptionMetaID;
+        int adoptionMetaID; 
         int year;
 
         public int Year
