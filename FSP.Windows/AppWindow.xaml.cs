@@ -1,4 +1,8 @@
-﻿using System;
+﻿using FSP.Windows.UICommon;
+using FSP.Windows.UIConstants;
+using FSP.Windows.Views.Administration;
+using FSP.Windows.Views.Companies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +26,30 @@ namespace FSP.Windows
         public AppWindow()
         {
             InitializeComponent();
+            this.Closed += AppWindow_Closed;
+            
+
+        }
+
+        void AppWindow_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainAdministrationView))
+            {
+                tab_Administration.Visibility = System.Windows.Visibility.Visible;
+            }
+
+            if (UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainAdministrationView))
+            {
+                tab_Company.Visibility = System.Windows.Visibility.Visible;
+            }
+
+            //tab_Administration.Content = new MainAdministrationView();
+            //tab_Company.Content = new MainCompanyAdministration();
         }
     }
 }

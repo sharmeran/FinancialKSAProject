@@ -17,6 +17,8 @@ using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
 using FSP.Windows.CommonView;
 using Telerik.Windows.Controls;
+using FSP.Windows.UIConstants;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Companies
 {
@@ -33,16 +35,32 @@ namespace FSP.Windows.Views.Companies
         public SubsidiaryCompanyView()
         {
             InitializeComponent();
+
+
         }
 
         public SubsidiaryCompanyView(int companyID)
         {
             InitializeComponent();
             CompanyID = companyID;
+           
         }
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SubsidiaryCompanyViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SubsidiaryCompanyViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SubsidiaryCompanyViewView))
+            {
+                grd_SubCompany.Visibility = System.Windows.Visibility.Hidden;
+            } 
+
             subsidiaryCompanyList = subsidiaryCompanyDomain.FindByCompanyID(CompanyID);
             if (subsidiaryCompanyDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
             {

@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Common.Entites.Administration;
 using FSP.Domain.Domains.Administration;
+using FSP.Windows.UICommon;
+using FSP.Windows.UIConstants;
 
 namespace FSP.Windows.Views.Administration
 {
@@ -34,10 +36,25 @@ namespace FSP.Windows.Views.Administration
         public GroupsAdministrationView()
         {
             InitializeComponent();
+          
+
         }
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.GroupViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.GroupViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.GroupViewView))
+            {
+                grd_Groups.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             accessList = accessListDomain.FindAll();
             if (accessListDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
             {
@@ -50,7 +67,7 @@ namespace FSP.Windows.Views.Administration
                 {
                     CheckBox chkBox = new CheckBox();
                     chkBox.DataContext = accessList[i];
-                    chkBox.Content = accessList[i].Name;
+                    chkBox.Content = accessList[i].Description;
                     accessListCheckBoxLis.Add(chkBox);
                 }
                 cmbo_AccessList.ItemsSource = accessListCheckBoxLis;
@@ -68,7 +85,7 @@ namespace FSP.Windows.Views.Administration
                 {
                     CheckBox chkBox = new CheckBox();
                     chkBox.DataContext = permissionList[i];
-                    chkBox.Content = permissionList[i].Name;
+                    chkBox.Content = permissionList[i].Description;
                     permissionCheckBoxLis.Add(chkBox);
                 }
                 cmbo_Permissions.ItemsSource = permissionCheckBoxLis;

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Domain.Domains.Administration;
+using FSP.Common.Entites.Administration;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Administration
 {
@@ -24,11 +26,12 @@ namespace FSP.Windows.Views.Administration
         public Login()
         {
             InitializeComponent();
+           
         }
 
         private void btn_Exit_Click_1(object sender, RoutedEventArgs e)
         {
-            //Environment.Exit(Environment.ExitCode);
+           
             ClearError();
         }
 
@@ -48,19 +51,28 @@ namespace FSP.Windows.Views.Administration
             }
             else
             {
-                UserDomain userDomain = new UserDomain(1, Common.Enums.LanguagesEnum.Arabic);
-                userDomain.CheckUserLogin(txt_Username.Text, txt_Password.Password);
-                if (userDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
-                {
-                    SetError(0, userDomain.ActionState.Result);
-                }
-                else
-                {
-                    AppWindow appWindow = new AppWindow();
-                    appWindow.Show();
-                    ((Window)((Grid)this.Parent).Parent).Close();
-                    
-                }
+                LoginOperation();
+            }
+        }
+
+        private void LoginOperation()
+        {
+            UserDomain userDomain = new UserDomain(1, Common.Enums.LanguagesEnum.Arabic);
+            User userEntity = new User();
+            userEntity = userDomain.CheckUserLogin(txt_Username.Text, txt_Password.Password);
+            if (userDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
+            {
+                SetError(0, userDomain.ActionState.Result);
+            }
+            else
+            {
+                UISecurity.UserEntity = userEntity;
+                AppWindow appWindow = new AppWindow();
+                
+                
+                appWindow.Show();
+                ((Window)((Grid)this.Parent).Parent).Close();
+
             }
         }
         private void SetError(int controlsToBeSet, string error)
@@ -91,6 +103,34 @@ namespace FSP.Windows.Views.Administration
             brdr_Username.BorderBrush = new SolidColorBrush(Colors.White);
             brdr_Password.BorderBrush = new SolidColorBrush(Colors.White);
             txt_ErrorDisplay.Text = string.Empty;
+        }
+
+        private void txt_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrEmpty(txt_Username.Text) && string.IsNullOrEmpty(txt_Password.Password))
+                {
+                    SetError(3, "يجب ملئ اسم المستخدم و كلمة المرور قبل الشروع بالدخول");
+                }
+                else if (string.IsNullOrEmpty(txt_Username.Text))
+                {
+                    SetError(1, "يجب ملئ اسم المستخدم قبل الشروع بالدخول");
+                }
+                else if (string.IsNullOrEmpty(txt_Password.Password))
+                {
+                    SetError(2, "يجب ملئ كلمة المرور قبل الشروع بالدخول");
+                }
+                else
+                {
+                    LoginOperation();
+                }
+            }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            txt_Username.Focus();
         }
     }
 }

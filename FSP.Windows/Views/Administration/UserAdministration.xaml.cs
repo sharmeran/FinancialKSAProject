@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Common.Entites.Administration;
 using FSP.Domain.Domains.Administration;
+using FSP.Windows.UIConstants;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Administration
 {
@@ -25,10 +27,25 @@ namespace FSP.Windows.Views.Administration
         public UserAdministration()
         {
             InitializeComponent();
+
+           
         }
         List<User> userList = new List<User>();
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.UserViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.UserViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.UserViewView))
+            {
+                grd_Users.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             UserDomain userDomain = new UserDomain(1, Common.Enums.LanguagesEnum.Arabic);
             userList = userDomain.FindAll();
             grd_Users.ItemsSource = userList;

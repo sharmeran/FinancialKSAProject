@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://shemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-            Width="600" Height="600" Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
+            Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

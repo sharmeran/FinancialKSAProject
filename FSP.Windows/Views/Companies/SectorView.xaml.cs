@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
+using FSP.Windows.UIConstants;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Companies
 {
@@ -25,6 +27,7 @@ namespace FSP.Windows.Views.Companies
         public SectorView()
         {
             InitializeComponent();
+           
         }
 
         SectorDomain sectorDomain = new SectorDomain(1, Common.Enums.LanguagesEnum.Arabic);
@@ -33,6 +36,19 @@ namespace FSP.Windows.Views.Companies
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SectorViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SectorViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SectorViewView))
+            {
+                grd_Sector.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             sectorList = sectorDomain.FindAll();
             if (sectorDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
             {

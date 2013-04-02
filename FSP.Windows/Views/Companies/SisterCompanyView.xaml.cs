@@ -17,6 +17,8 @@ using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
 using FSP.Windows.CommonView;
 using Telerik.Windows.Controls;
+using FSP.Windows.UIConstants;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Companies
 {
@@ -28,6 +30,7 @@ namespace FSP.Windows.Views.Companies
         public SisterCompanyView()
         {
             InitializeComponent();
+            
         }
         int CompanyID = 0;
         SisterCompany sisterCompany = new SisterCompany();
@@ -38,9 +41,23 @@ namespace FSP.Windows.Views.Companies
         {
             InitializeComponent();
             CompanyID = companyID;
+           
         }
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewView))
+            {
+                grd_SisterCompany.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             SisterCompanyDomain sisterCompanyDomain = new SisterCompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
             sisterCompanyList = sisterCompanyDomain.FindByCompanyID(CompanyID);
             if (sisterCompanyDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
