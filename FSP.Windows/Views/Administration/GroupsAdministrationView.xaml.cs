@@ -192,7 +192,7 @@ namespace FSP.Windows.Views.Administration
                         MessageBox.Show("تم الحذف بنجاح", "حذف المجموعة", MessageBoxButton.OK, MessageBoxImage.Information);
                         groupList.Remove(groupEntity);
                         grd_Groups.ItemsSource = null;
-                        grd_Groups.ItemsSource = groupEntity;
+                        grd_Groups.ItemsSource = groupList;
                         Clear();
                     }
                     else
