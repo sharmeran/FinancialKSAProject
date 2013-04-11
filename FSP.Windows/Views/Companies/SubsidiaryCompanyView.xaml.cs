@@ -128,7 +128,7 @@ namespace FSP.Windows.Views.Companies
                 subsidiaryCompany.Place = txt_Place.Text;
                 subsidiaryCompany.PlaceEnglish = txt_PlaceEnglish.Text;
                 subsidiaryCompany.Sector = (Sector)cmbo_Sector.SelectedItem;
-                subsidiaryCompany.OwnPercentage = Convert.ToInt32(txt_OwnerPercentage.Text);
+                subsidiaryCompany.OwnPercentage =(float) Convert.ToDecimal(txt_OwnerPercentage.Text);
                 subsidiaryCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
 
                 if (subsidiaryCompany.ID == 0)

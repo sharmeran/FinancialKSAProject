@@ -17,7 +17,7 @@ namespace FSP.Common.Entites.CompanyAdministration
         DateTime followDate;
         string place;
         string placeEnglish;
-        int ownPercentage;
+        float ownPercentage;
         string note;
         string noteEnglish;
         int companyID;
@@ -61,7 +61,7 @@ namespace FSP.Common.Entites.CompanyAdministration
             set { note = value; }
         }
 
-        public int OwnPercentage
+        public float OwnPercentage
         {
             get { return ownPercentage; }
             set { ownPercentage = value; }
