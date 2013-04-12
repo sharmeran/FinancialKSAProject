@@ -6,7 +6,9 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
               Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
-    <Grid>
+    
+
+        <Grid>
         <StackPanel Orientation="Vertical" Margin="10,20,0,0" >
 
             <StackPanel Orientation="Horizontal">
@@ -111,6 +113,9 @@
                 <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Delete"  Click="btn_Delete_Click_1">
                     <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="حذف"/>
                 </telerik:RadButton>
+                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Refresh" Click="btn_Refresh_Click"  >
+                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="تحديث"/>
+                </telerik:RadButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="stk_SubCompanies" Visibility="Collapsed" Margin="130,10,0,0">
                 <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Name="btn_SisterCompany" Click="btn_SisterCompany_Click_1">
@@ -121,15 +126,17 @@
                 </telerik:RadButton>
             </StackPanel>
             <StackPanel Margin="0,10,0,0">
-                <telerik:RadGridView Name="grd_Company" MouseDoubleClick="grd_Sector_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" >
+                                <telerik:RadGridView Height="250" Name="grd_Company" MouseDoubleClick="grd_Sector_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" >
                     <telerik:RadGridView.Columns>
-                        <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" Width="120"/>
+                        <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" />
                         <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>
+                        <telerik:GridViewDataColumn Header="القطاع" DataMemberBinding="{Binding Sector.Name}" Width="120"/>
                         <telerik:GridViewDataColumn Header="عدد الشركات الشقيقة" DataMemberBinding="{Binding SisterCompanyList.Count}" Width="120"/>
                         <telerik:GridViewDataColumn Header="عدد الشركات التابعة" DataMemberBinding="{Binding SubsidiaryCompanyList.Count}" Width="120"/>
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>
+              
             </StackPanel>
         </StackPanel>
-    </Grid>
+    </Grid>  
 </UserControl>

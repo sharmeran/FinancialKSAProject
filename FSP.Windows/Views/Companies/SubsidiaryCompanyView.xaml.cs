@@ -118,8 +118,15 @@ namespace FSP.Windows.Views.Companies
                 subsidiaryCompany.DescriptionEnglish = txt_DescriptionEnglish.Text;
                 DateTimeFormatInfo format = new DateTimeFormatInfo();
                 format.ShortDatePattern = "dd/MM/yyyy";
-                subsidiaryCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
-                subsidiaryCompany.FollowDate = Convert.ToDateTime(dtpkr_FollowDateGer.Text, format);
+                if (dtpkr_EstablishGer.Text != string.Empty)
+                {
+                    
+                    subsidiaryCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
+                }
+                if (dtpkr_FollowDateGer.Text != string.Empty)
+                {
+                    subsidiaryCompany.FollowDate = Convert.ToDateTime(dtpkr_FollowDateGer.Text, format);
+                }
                 subsidiaryCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
                 subsidiaryCompany.Name = txt_Name.Text;
                 subsidiaryCompany.NameEnglish = txt_NameEnglish.Text;
@@ -222,15 +229,15 @@ namespace FSP.Windows.Views.Companies
                 txt_Place.Text = subsidiaryCompany.Place;
                 txt_PlaceEnglish.Text = subsidiaryCompany.PlaceEnglish;
                 chk_IsOutKSA.IsChecked = subsidiaryCompany.IsOutKSA;
-                if (subsidiaryCompany.EstablishDate.Year != 1)
+                if (subsidiaryCompany.EstablishDate!=null)
                 {
-                    dtpkr_EstablishGer.Text = subsidiaryCompany.EstablishDate.Date.ToString("dd/MM/yyyy");
+                    dtpkr_EstablishGer.Text = Convert.ToDateTime (subsidiaryCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_EstablishHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
 
-                if (subsidiaryCompany.FollowDate.Year != 1)
+                if (subsidiaryCompany.FollowDate!=null)
                 {
-                    dtpkr_FollowDateGer.Text = subsidiaryCompany.FollowDate.Date.ToString("dd/MM/yyyy");
+                    dtpkr_FollowDateGer.Text =Convert.ToDateTime (subsidiaryCompany.FollowDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_FollowDateHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
 
@@ -286,13 +293,13 @@ namespace FSP.Windows.Views.Companies
         {
             bool name = false;
             bool description = false;
-            bool establishDate = false;
+            //bool establishDate = false;
             bool information = false;
             bool nameEnglish = false;
             bool descriptionEnglish = false;
             bool informationEnglish = false;
             bool capital = false;
-            bool followDate = false;
+           // bool followDate = false;
             bool place = false;
             bool placeEnglish = false;
 
@@ -326,44 +333,44 @@ namespace FSP.Windows.Views.Companies
                 descriptionEnglish = false;
                 txt_Err_DescriptionEnglish.Text = "يجب ملئ الوصف بالنجليزي";
             }
-            if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
-            {
-                if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
-                {
-                    establishDate = true;
-                    txt_Err_Establish.Text = string.Empty;
-                }
-                else
-                {
-                    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-                }
-            }
-            else
-            {
-                establishDate = false;
-                txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-            }
+            //if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
+            //{
+            //    if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
+            //    {
+            //        establishDate = true;
+            //        txt_Err_Establish.Text = string.Empty;
+            //    }
+            //    else
+            //    {
+            //        txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //    }
+            //}
+            //else
+            //{
+            //    establishDate = false;
+            //    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //}
 
-            if (string.IsNullOrEmpty(dtpkr_FollowDateGer.Text) == false)
-            {
-                if (Helper.CheckDateGer(dtpkr_FollowDateGer.Text))
-                {
-                    followDate = true;
-                    txt_Err_FollowDate.Text = string.Empty;
-                }
-                else
-                {
-                    txt_Err_FollowDate.Text = "يجب ملئ سنة التبعية";
-                }
-            }
-            else
-            {
+            //if (string.IsNullOrEmpty(dtpkr_FollowDateGer.Text) == false)
+            //{
+            //    if (Helper.CheckDateGer(dtpkr_FollowDateGer.Text))
+            //    {
+            //        followDate = true;
+            //        txt_Err_FollowDate.Text = string.Empty;
+            //    }
+            //    else
+            //    {
+            //        txt_Err_FollowDate.Text = "يجب ملئ سنة التبعية";
+            //    }
+            //}
+            //else
+            //{
                
                 
-                    followDate = false;
-                    txt_Err_FollowDate.Text = "يجب ملئ سنة التبعية";
+            //        followDate = false;
+            //        txt_Err_FollowDate.Text = "يجب ملئ سنة التبعية";
                 
-            }
+            //}
 
             if (string.IsNullOrEmpty(txt_OwnerPercentage.Text) == false)
             {
@@ -441,8 +448,9 @@ namespace FSP.Windows.Views.Companies
                 txt_Err_PlaceEnglish.Text = "يجب ملئ العنوان بالانجليزية";
                 placeEnglish = false;
             }
+            //establishDate & followDate
 
-            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & capital & establishDate & followDate &place & placeEnglish;
+            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & capital &  place & placeEnglish;
         }
         private string GerToHejri(string date)
         {

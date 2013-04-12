@@ -351,6 +351,7 @@ namespace FSP.Windows.Views.Companies
             txt_Rank.Text = string.Empty;
             company = new Company();
             cmbo_Sector.SelectedIndex = 0;
+            //grd_Company.ItemsSource = companyDomain.FindAll();
             stk_SubCompanies.Visibility = System.Windows.Visibility.Collapsed;
             for (int i = 0; i < cmbo_Behaviours.Items.Count; i++)
             {
@@ -589,6 +590,11 @@ namespace FSP.Windows.Views.Companies
                 window.Content = subsidiaryCompanyView;
                 window.ShowDialog();
             }
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            grd_Company.ItemsSource = companyDomain.FindAll();
         }
 
 

@@ -264,7 +264,9 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             subsidiaryCompany.CompanyID = Convert.ToInt32(reader[SubsidiaryCompanyConstants.CompanyID]);
             subsidiaryCompany.Description = reader[SubsidiaryCompanyConstants.Description].ToString();
             subsidiaryCompany.DescriptionEnglish = reader[SubsidiaryCompanyConstants.DescriptionEnglish].ToString();
+            if(reader[SubsidiaryCompanyConstants.EstablishDate]!=DBNull.Value)
             subsidiaryCompany.EstablishDate = Convert.ToDateTime(reader[SubsidiaryCompanyConstants.EstablishDate]);
+            if (reader[SubsidiaryCompanyConstants.FollowDate] != DBNull.Value)
             subsidiaryCompany.FollowDate = Convert.ToDateTime(reader[SubsidiaryCompanyConstants.FollowDate]);
             subsidiaryCompany.ID = Convert.ToInt32(reader[SubsidiaryCompanyConstants.ID]);
             subsidiaryCompany.IsOutKSA = Convert.ToBoolean(reader[SubsidiaryCompanyConstants.IsOutKSA]);
