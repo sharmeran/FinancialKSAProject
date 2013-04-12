@@ -17,10 +17,17 @@ namespace FSP.Common.Entites.CompanyAdministration
         string descriptionEnglish;
         string place;
         string placeEnglish;
-        DateTime establishDate;
+        DateTime? establishDate;
         int companyID;
         bool isOutKSA;
         Sector sector;
+        float ownerPercentage;
+
+        public float OwnerPercentage
+        {
+            get { return ownerPercentage; }
+            set { ownerPercentage = value; }
+        }
 
         public Sector Sector
         {
@@ -40,7 +47,7 @@ namespace FSP.Common.Entites.CompanyAdministration
             set { companyID = value; }
         }
 
-        public DateTime EstablishDate
+        public DateTime? EstablishDate
         {
             get { return establishDate; }
             set { establishDate = value; }

@@ -68,6 +68,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.Company, DbType.Int32, entity.CompanyID);
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.IsOutKsa, DbType.Boolean, entity.IsOutKSA);
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.Sector, DbType.Int32, entity.Sector.ID);
+                database.AddInParameter(cmd, SisterCompanyRepositoryConstants.OwnPercentage, DbType.Decimal, entity.OwnerPercentage);
 
                 spResult = Convert.ToInt32(database.ExecuteScalar(cmd));
                 if (spResult > 0)
@@ -110,6 +111,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.Company, DbType.Int32, entity.CompanyID);
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.IsOutKsa, DbType.Boolean, entity.IsOutKSA);
                 database.AddInParameter(cmd, SisterCompanyRepositoryConstants.Sector, DbType.Int32, entity.Sector.ID);
+                database.AddInParameter(cmd, SisterCompanyRepositoryConstants.OwnPercentage, DbType.Decimal, entity.OwnerPercentage);
 
                 spResult = database.ExecuteNonQuery(cmd);
                 if (spResult > 0)
@@ -257,6 +259,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             sisterCompany.CompanyID = Convert.ToInt32(reader[SisterCompanyConstants.Company]);
             sisterCompany.Description = reader[SisterCompanyConstants.Description].ToString();
             sisterCompany.DescriptionEnglish = reader[SisterCompanyConstants.DescriptionEnglish].ToString();
+            if(reader[SisterCompanyConstants.EstablishDate]!= DBNull.Value)
             sisterCompany.EstablishDate = Convert.ToDateTime(reader[SisterCompanyConstants.EstablishDate]);
             sisterCompany.ID = Convert.ToInt32(reader[SisterCompanyConstants.ID]);
             sisterCompany.IsOutKSA = Convert.ToBoolean(reader[SisterCompanyConstants.IsOutKsa]);
@@ -266,6 +269,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             sisterCompany.PlaceEnglish = reader[SisterCompanyConstants.PlaceEnglish].ToString();
             SectorRepository sectorRepository = new SectorRepository();
             sisterCompany.Sector = sectorRepository.FindByID(Convert.ToInt32(reader[SisterCompanyConstants.Sector]), new Common.ActionState());
+            sisterCompany.OwnerPercentage = (float)Convert.ToDecimal(reader[SisterCompanyConstants.OwnPercentage]);
             return sisterCompany;
         }
     }

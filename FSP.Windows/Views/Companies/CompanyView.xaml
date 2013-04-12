@@ -56,7 +56,7 @@
                 <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Capital"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="ترتيب الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <TextBlock Text="رمز الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Rank"/>
                 <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Rank"/>
             </StackPanel>
@@ -125,6 +125,8 @@
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" Width="120"/>
                         <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>
+                        <telerik:GridViewDataColumn Header="عدد الشركات الشقيقة" DataMemberBinding="{Binding SisterCompanyList.Count}" Width="120"/>
+                        <telerik:GridViewDataColumn Header="عدد الشركات التابعة" DataMemberBinding="{Binding SubsidiaryCompanyList.Count}" Width="120"/>
                     </telerik:RadGridView.Columns>
                 </telerik:RadGridView>
             </StackPanel>

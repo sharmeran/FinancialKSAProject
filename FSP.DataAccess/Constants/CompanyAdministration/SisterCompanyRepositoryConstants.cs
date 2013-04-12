@@ -21,6 +21,7 @@ namespace FSP.DataAccess.Constants.CompanyAdministration
        public const string Company = CommonConstants.PreParameter + SisterCompanyConstants.Company;
        public const string IsOutKsa = CommonConstants.PreParameter + SisterCompanyConstants.IsOutKsa;
        public const string Sector = CommonConstants.PreParameter + SisterCompanyConstants.Sector;
+       public const string OwnPercentage = CommonConstants.PreParameter + SisterCompanyConstants.OwnPercentage;
 
        public const string SP_Insert = "SisterCompanyInsert";
        public const string SP_Delete = "SisterCompanyDelete";

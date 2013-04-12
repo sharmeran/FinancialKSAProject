@@ -101,9 +101,9 @@ namespace FSP.Windows.Views.Companies
                         break;
                     }
                 }
-                if (sisterCompany.EstablishDate.Year != 1)
+                if (sisterCompany.EstablishDate!= null  )
                 {
-                    dtpkr_EstablishGer.Text = sisterCompany.EstablishDate.Date.ToString("dd/MM/yyyy");
+                    dtpkr_EstablishGer.Text = ((DateTime)sisterCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_EstablishHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
                 chk_IsOutKSA.IsChecked = sisterCompany.IsOutKSA;
@@ -150,9 +150,12 @@ namespace FSP.Windows.Views.Companies
                 sisterCompany.CompanyID = CompanyID;
                 sisterCompany.Description = txt_Description.Text;
                 sisterCompany.DescriptionEnglish = txt_DescriptionEnglish.Text;
-                DateTimeFormatInfo format = new DateTimeFormatInfo();
-                format.ShortDatePattern = "dd/MM/yyyy";
-                sisterCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
+                if (dtpkr_EstablishGer.Text != string.Empty)
+                {
+                    DateTimeFormatInfo format = new DateTimeFormatInfo();
+                    format.ShortDatePattern = "dd/MM/yyyy";
+                    sisterCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
+                }
                 sisterCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
                 sisterCompany.Name = txt_Name.Text;
                 sisterCompany.NameEnglish = txt_NameEnglish.Text;
@@ -259,7 +262,7 @@ namespace FSP.Windows.Views.Companies
         {
             bool name = false;
             bool description = false;
-            bool establishDate = false;
+           // bool establishDate = false;
             bool information = false;
             bool nameEnglish = false;
             bool descriptionEnglish = false;
@@ -296,24 +299,24 @@ namespace FSP.Windows.Views.Companies
                 descriptionEnglish = false;
                 txt_Err_DescriptionEnglish.Text = "يجب ملئ الوصف بالنجليزي";
             }
-            if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
-            {
-                if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
-                {
-                    establishDate = true;
-                    txt_Err_Establish.Text = string.Empty;
-                }
-                else
-                {
-                    establishDate = false;
-                    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-                }
-            }
-            else
-            {
-                establishDate = false;
-                txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-            }
+            //if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
+            //{
+            //    if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
+            //    {
+            //        establishDate = true;
+            //        txt_Err_Establish.Text = string.Empty;
+            //    }
+            //    else
+            //    {
+            //        establishDate = false;
+            //        txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //    }
+            //}
+            //else
+            //{
+            //    establishDate = false;
+            //    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //}
 
             if (string.IsNullOrEmpty(txt_Place.Text) == false)
             {
@@ -347,7 +350,7 @@ namespace FSP.Windows.Views.Companies
                 txt_Err_NameEnglish.Text = "يجب ملئ الاسم بالانجليزية";
                 nameEnglish = false;
             }
-            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & establishDate;
+            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish; //& establishDate;
         }
 
         private void Clear()
