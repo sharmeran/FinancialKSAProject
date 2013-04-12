@@ -21,5 +21,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "IntangiblesDelete";
         public const string SP_FindAll = "IntangiblesFindAll";
         public const string SP_FindByID = "IntangiblesFindByID";
+        public const string SP_FindBYAssetsID = "IntangiblesFindByAssetsID";
     }
 }

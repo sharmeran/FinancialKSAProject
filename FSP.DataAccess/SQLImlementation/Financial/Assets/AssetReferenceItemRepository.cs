@@ -172,6 +172,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<AssetReferenceItem> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<AssetReferenceItem> list;
+            AssetReferenceItem entity;
+            DbCommand cmd;
+
+            list = new List<AssetReferenceItem>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(AssetReferenceItemRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, AssetReferenceItemRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = AssetReferenceItemHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<AssetReferenceItem> FindAll(Common.ActionState actionState)
         {
             List<AssetReferenceItem> list;

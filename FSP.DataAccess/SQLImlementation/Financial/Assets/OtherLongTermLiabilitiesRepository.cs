@@ -151,6 +151,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<OtherLongTermLiabilities> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<OtherLongTermLiabilities> list;
+            OtherLongTermLiabilities entity;
+            DbCommand cmd;
+
+            list = new List<OtherLongTermLiabilities>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(OtherLongTermLiabilitiesRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, OtherLongTermLiabilitiesRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = OtherLongTermLiabilitiesHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<OtherLongTermLiabilities> FindAll(Common.ActionState actionState)
         {
             List<OtherLongTermLiabilities> list;

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using FSP.Common.BaseClasses;
 using FSP.Common.Entites.CompanyAdministration;
 using FSP.Common.Entites.Administration;
+using FSP.Common.Entites.Financial.Income;
+using FSP.Common.Entites.Financial.Assets;
+using FSP.Common.Entites.Financial.CashFlow;
 
 namespace FSP.Common.Entites.Financial
 {
@@ -19,6 +22,27 @@ namespace FSP.Common.Entites.Financial
         int reviewedUserID;
         bool isApproved;
         bool isReviewed;
+        List<IncomeStatment> incomeList;
+        List<CashFlowStatement> cashFlowList;
+
+        public List<CashFlowStatement> CashFlowList
+        {
+            get { return cashFlowList; }
+            set { cashFlowList = value; }
+        }
+        List<Asset> assetsList;
+
+        public List<Asset> AssetsList
+        {
+            get { return assetsList; }
+            set { assetsList = value; }
+        }
+
+        public List<IncomeStatment> IncomeList
+        {
+            get { return incomeList; }
+            set { incomeList = value; }
+        }
 
         public int ID
         {

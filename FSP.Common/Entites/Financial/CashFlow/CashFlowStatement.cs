@@ -30,5 +30,41 @@ namespace FSP.Common.Entites.Financial.CashFlow
             get { return companyFinancialModel; }
             set { companyFinancialModel = value; }
         }
+
+        List<CashCashEquivalentPeriodEnd> cashCashEquivalentPeriodEndList;
+
+        public List<CashCashEquivalentPeriodEnd> CashCashEquivalentPeriodEndList
+        {
+            get { return cashCashEquivalentPeriodEndList; }
+            set { cashCashEquivalentPeriodEndList = value; }
+        }
+        List<CashFlowsFromInvestingActivities> cashFlowsFromInvestingActivitiesList;
+
+        public List<CashFlowsFromInvestingActivities> CashFlowsFromInvestingActivitiesList
+        {
+            get { return cashFlowsFromInvestingActivitiesList; }
+            set { cashFlowsFromInvestingActivitiesList = value; }
+        }
+        List<CashFlowsFromOperatingActivities> cashFlowsFromOperatingActivitiesList;
+
+        public List<CashFlowsFromOperatingActivities> CashFlowsFromOperatingActivitiesList
+        {
+            get { return cashFlowsFromOperatingActivitiesList; }
+            set { cashFlowsFromOperatingActivitiesList = value; }
+        }
+        List<CashFromFinancingActivities> cashFromFinancingActivitiesList;
+
+        public List<CashFromFinancingActivities> CashFromFinancingActivitiesList
+        {
+            get { return cashFromFinancingActivitiesList; }
+            set { cashFromFinancingActivitiesList = value; }
+        }
+        List<ReferenceItem> referenceItemList;
+
+        public List<ReferenceItem> ReferenceItemList
+        {
+            get { return referenceItemList; }
+            set { referenceItemList = value; }
+        }
     }
 }

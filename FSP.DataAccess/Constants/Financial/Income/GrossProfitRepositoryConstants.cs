@@ -20,5 +20,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_Delete = "GrossProfitDelete";
         public const string SP_FindAll = "GrossProfitFindAll";
         public const string SP_FindByID = "GrossProfitFindByID";
+        public const string SP_FindBYIncomeStatmentID = "GrossProfitFindByIncomeStatmentID";
     }
 }

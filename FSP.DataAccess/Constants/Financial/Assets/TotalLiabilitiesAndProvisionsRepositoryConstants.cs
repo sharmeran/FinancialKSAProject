@@ -32,5 +32,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "TotalLiabilitiesAndProvisionsDelete";
         public const string SP_FindAll = "TotalLiabilitiesAndProvisionsFindAll";
         public const string SP_FindByID = "TotalLiabilitiesAndProvisionsFindByID";
+        public const string SP_FindBYAssetsID = "TotalLiabilitiesAndProvisionsFindByAssetsID";
     }
 }

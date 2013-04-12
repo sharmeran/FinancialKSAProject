@@ -37,5 +37,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "TotalLongTermDebtDelete";
         public const string SP_FindAll = "TotalLongTermDebtFindAll";
         public const string SP_FindByID = "TotalLongTermDebtFindByID";
+        public const string SP_FindBYAssetsID = "TotalLongTermDebtFindByAssetsID";
     }
 }

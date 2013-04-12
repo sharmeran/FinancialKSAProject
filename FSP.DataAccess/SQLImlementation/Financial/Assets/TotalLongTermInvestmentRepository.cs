@@ -155,6 +155,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<TotalLongTermInvestment> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<TotalLongTermInvestment> list;
+            TotalLongTermInvestment entity;
+            DbCommand cmd;
+
+            list = new List<TotalLongTermInvestment>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(TotalLongTermInvestmentRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, TotalLongTermInvestmentRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = TotalLongTermInvestmentHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<TotalLongTermInvestment> FindAll(Common.ActionState actionState)
         {
             List<TotalLongTermInvestment> list;

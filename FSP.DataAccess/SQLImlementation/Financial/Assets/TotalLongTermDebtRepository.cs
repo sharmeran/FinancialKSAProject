@@ -165,6 +165,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<TotalLongTermDebt> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<TotalLongTermDebt> list;
+            TotalLongTermDebt entity;
+            DbCommand cmd;
+
+            list = new List<TotalLongTermDebt>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(TotalLongTermDebtRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, TotalLongTermDebtRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = TotalLongTermDebtHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<TotalLongTermDebt> FindAll(Common.ActionState actionState)
         {
             List<TotalLongTermDebt> list;

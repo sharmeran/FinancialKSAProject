@@ -22,5 +22,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "CurrentReceivablesDelete";
         public const string SP_FindAll = "CurrentReceivablesFindAll";
         public const string SP_FindByID = "CurrentReceivablesFindByID";
+        public const string SP_FindBYAssetsID = "CurrentReceivablesFindByAssetsID";
     }
 }

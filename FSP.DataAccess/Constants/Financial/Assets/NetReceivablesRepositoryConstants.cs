@@ -21,5 +21,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "NetReceivablesDelete";
         public const string SP_FindAll = "NetReceivablesFindAll";
         public const string SP_FindByID = "NetReceivablesFindByID";
+        public const string SP_FindBYAssetsID = "NetReceivablesFindByAssetsID";
     }
 }

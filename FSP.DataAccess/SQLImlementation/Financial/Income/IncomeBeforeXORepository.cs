@@ -172,6 +172,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
             return list;
         }
 
+        public List<IncomeBeforeXO> FindByIncomeStatmentID(int incomeStatmentID, Common.ActionState actionState)
+        {
+            List<IncomeBeforeXO> list;
+            IncomeBeforeXO entity;
+            DbCommand cmd;
+
+            list = new List<IncomeBeforeXO>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(IncomeBeforeXORepositoryConstants.SP_FindBYIncomeStatmentID);
+                database.AddInParameter(cmd, IncomeBeforeXORepositoryConstants.IncomeStatmentID, DbType.Int32, incomeStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = IncomeBeforeXOHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override IncomeBeforeXO FindByID(int entityID, Common.ActionState actionState)
         {
             // Declaration 

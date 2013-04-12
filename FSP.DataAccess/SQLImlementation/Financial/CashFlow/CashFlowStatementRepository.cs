@@ -157,8 +157,18 @@ namespace FSP.DataAccess.SQLImlementation.Financial.CashFlow
             CashFlowStatement cashFlowStatement = new CashFlowStatement();
             cashFlowStatement.CompanyFinancialModelID = Convert.ToInt32(reader[CashFlowStatementConstants.CompanyFinancialModelID]);
             CompanyFinancialModelRepository companyFinancialModelRepository = new CompanyFinancialModelRepository();
-            cashFlowStatement.CompanyFinancialModel = companyFinancialModelRepository.FindByID(Convert.ToInt32(reader[CashFlowStatementConstants.CompanyFinancialModelID]), new ActionState());
+            cashFlowStatement.CompanyFinancialModel = companyFinancialModelRepository.FindByID(cashFlowStatement.CompanyFinancialModelID, new ActionState());
             cashFlowStatement.ID = Convert.ToInt32(reader[CashFlowStatementConstants.ID]);
+            CashCashEquivalentPeriodEndRepository cashCashEquivalentPeriodEndRepository = new CashCashEquivalentPeriodEndRepository();
+            cashFlowStatement.CashCashEquivalentPeriodEndList = cashCashEquivalentPeriodEndRepository.FindByCashFlowStatmentID(cashFlowStatement.ID, new ActionState());
+            CashFlowsFromInvestingActivitiesRepository cashFlowsFromInvestingActivitiesRepository = new CashFlowsFromInvestingActivitiesRepository();
+            cashFlowStatement.CashFlowsFromInvestingActivitiesList = cashFlowsFromInvestingActivitiesRepository.FindByCashFlowStatmentID(cashFlowStatement.ID, new ActionState());
+            CashFlowsFromOperatingActivitiesRepository cashFlowsFromOperatingActivitiesRepository = new CashFlowsFromOperatingActivitiesRepository();
+            cashFlowStatement.CashFlowsFromOperatingActivitiesList = cashFlowsFromOperatingActivitiesRepository.FindByCashFlowStatmentID(cashFlowStatement.ID, new ActionState());
+            CashFromFinancingActivitiesRepository cashFromFinancingActivitiesRepository = new CashFromFinancingActivitiesRepository();
+            cashFlowStatement.CashFromFinancingActivitiesList = cashFromFinancingActivitiesRepository.FindByCashFlowStatmentID(cashFlowStatement.ID, new ActionState());
+            ReferenceItemRepository referenceItemRepository = new ReferenceItemRepository();
+            cashFlowStatement.ReferenceItemList = referenceItemRepository.FindByCashFlowStatmentID(cashFlowStatement.ID, new ActionState());
             return cashFlowStatement;
         }
     }

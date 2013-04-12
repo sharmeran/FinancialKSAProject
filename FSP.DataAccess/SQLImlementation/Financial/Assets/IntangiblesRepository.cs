@@ -133,6 +133,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<Intangibles> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<Intangibles> list;
+            Intangibles entity;
+            DbCommand cmd;
+
+            list = new List<Intangibles>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(IntangiblesRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, IntangiblesRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = IntangiblesHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<Intangibles> FindAll(Common.ActionState actionState)
         {
             List<Intangibles> list;

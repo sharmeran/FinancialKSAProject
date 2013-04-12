@@ -22,5 +22,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_Delete = "IncomeBeforeXODelete";
         public const string SP_FindAll = "IncomeBeforeXOFindAll";
         public const string SP_FindByID = "IncomeBeforeXOFindByID";
+        public const string SP_FindBYIncomeStatmentID = "IncomeBeforeXOFindByIncomeStatmentID";
     }
 }

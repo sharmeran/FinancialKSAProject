@@ -154,6 +154,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
             }
         }
 
+        public List<OperatingIncome> FindByIncomeStatmentID(int incomeStatmentID, Common.ActionState actionState)
+        {
+            List<OperatingIncome> list;
+            OperatingIncome entity;
+            DbCommand cmd;
+
+            list = new List<OperatingIncome>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(OperatingIncomeRepositoryConstants.SP_FindBYIncomeStatmentID);
+                database.AddInParameter(cmd, OperatingIncomeRepositoryConstants.IncomeStatmentID, DbType.Int32, incomeStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = OperatingIncomeHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<OperatingIncome> FindAll(Common.ActionState actionState)
         {
             List<OperatingIncome> list;

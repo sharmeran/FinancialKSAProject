@@ -198,6 +198,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
             return list;
         }
 
+        public List<NetIncome> FindByIncomeStatmentID(int incomeStatmentID, Common.ActionState actionState)
+        {
+            List<NetIncome> list;
+            NetIncome entity;
+            DbCommand cmd;
+
+            list = new List<NetIncome>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(NetIncomeRepositoryConstants.SP_FindBYIncomeStatmentID);
+                database.AddInParameter(cmd, NetIncomeRepositoryConstants.IncomeStatmentID, DbType.Int32, incomeStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = NetIncomeHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override NetIncome FindByID(int entityID, Common.ActionState actionState)
         {
             // Declaration 

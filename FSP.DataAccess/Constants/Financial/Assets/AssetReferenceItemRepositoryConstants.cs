@@ -40,5 +40,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "AssetsReferenceItemsDelete";
         public const string SP_FindAll = "AssetsReferenceItemsFindAll";
         public const string SP_FindByID = "AssetsReferenceItemsFindByID";
+        public const string SP_FindBYAssetsID = "AssetsReferenceItemsFindByAssetsID";
     }
 }

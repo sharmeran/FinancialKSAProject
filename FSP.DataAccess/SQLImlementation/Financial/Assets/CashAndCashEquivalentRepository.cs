@@ -168,6 +168,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<CashAndCashEquivalent> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<CashAndCashEquivalent> list;
+            CashAndCashEquivalent entity;
+            DbCommand cmd;
+
+            list = new List<CashAndCashEquivalent>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(CashAndCashEquivalentRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, CashAndCashEquivalentRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = CashAndCashEquivalentHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<CashAndCashEquivalent> FindAll(Common.ActionState actionState)
         {
             List<CashAndCashEquivalent> list;

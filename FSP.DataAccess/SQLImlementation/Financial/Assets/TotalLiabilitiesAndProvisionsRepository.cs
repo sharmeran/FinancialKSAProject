@@ -155,6 +155,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<TotalLiabilitiesAndProvisions> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<TotalLiabilitiesAndProvisions> list;
+            TotalLiabilitiesAndProvisions entity;
+            DbCommand cmd;
+
+            list = new List<TotalLiabilitiesAndProvisions>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(TotalLiabilitiesAndProvisionsRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, TotalLiabilitiesAndProvisionsRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = TotalLiabilitiesAndProvisionsHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<TotalLiabilitiesAndProvisions> FindAll(Common.ActionState actionState)
         {
             List<TotalLiabilitiesAndProvisions> list;

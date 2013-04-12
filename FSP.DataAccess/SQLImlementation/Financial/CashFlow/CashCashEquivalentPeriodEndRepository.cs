@@ -132,6 +132,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.CashFlow
             }
         }
 
+        public List<CashCashEquivalentPeriodEnd> FindByCashFlowStatmentID(int cashFlowStatmentID, Common.ActionState actionState)
+        {
+            List<CashCashEquivalentPeriodEnd> list;
+            CashCashEquivalentPeriodEnd entity;
+            DbCommand cmd;
+
+            list = new List<CashCashEquivalentPeriodEnd>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(CashCashEquivalentPeriodEndRepositoryConstants.SP_FindBYCashFlowStatmentID);
+                database.AddInParameter(cmd, CashCashEquivalentPeriodEndRepositoryConstants.CashFlowStatementID , DbType.Int32, cashFlowStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = CashCashEquivalentPeriodEndHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<CashCashEquivalentPeriodEnd> FindAll(Common.ActionState actionState)
         {
             List<CashCashEquivalentPeriodEnd> list;

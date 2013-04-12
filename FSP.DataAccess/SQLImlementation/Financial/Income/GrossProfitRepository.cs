@@ -168,6 +168,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
             return list;
         }
 
+        public List<GrossProfit> FindByIncomeStatmentID(int incomeStatmentID, Common.ActionState actionState)
+        {
+            List<GrossProfit> list;
+            GrossProfit entity;
+            DbCommand cmd;
+
+            list = new List<GrossProfit>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(GrossProfitRepositoryConstants.SP_FindBYIncomeStatmentID);
+                database.AddInParameter(cmd, GrossProfitRepositoryConstants.IncomeStatmentID, DbType.Int32, incomeStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = GrossProfitHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override GrossProfit FindByID(int entityID, Common.ActionState actionState)
         {
             // Declaration 

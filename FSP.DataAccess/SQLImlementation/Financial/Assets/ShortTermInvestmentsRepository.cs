@@ -135,6 +135,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<ShortTermInvestments> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<ShortTermInvestments> list;
+            ShortTermInvestments entity;
+            DbCommand cmd;
+
+            list = new List<ShortTermInvestments>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(ShortTermInvestmentsRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, ShortTermInvestmentsRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = ShortTermInvestmentsHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<ShortTermInvestments> FindAll(Common.ActionState actionState)
         {
             List<ShortTermInvestments> list;

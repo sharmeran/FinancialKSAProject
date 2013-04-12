@@ -20,5 +20,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "OtherShortTermLiabilitiesDelete";
         public const string SP_FindAll = "OtherShortTermLiabilitiesFindAll";
         public const string SP_FindByID = "OtherShortTermLiabilitiesFindByID";
+        public const string SP_FindBYAssetsID = "OtherShortTermLiabilitiesFindByAssetsID";
     }
 }

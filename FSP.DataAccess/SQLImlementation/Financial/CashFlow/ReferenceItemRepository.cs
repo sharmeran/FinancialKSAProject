@@ -144,6 +144,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.CashFlow
             }
         }
 
+        public List<ReferenceItem> FindByCashFlowStatmentID(int cashFlowStatmentID, Common.ActionState actionState)
+        {
+            List<ReferenceItem> list;
+            ReferenceItem entity;
+            DbCommand cmd;
+
+            list = new List<ReferenceItem>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(ReferenceItemRepositoryConstants.SP_FindBYCashFlowStatmentID);
+                database.AddInParameter(cmd, ReferenceItemRepositoryConstants.CashFlowStatementID, DbType.Int32, cashFlowStatmentID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = ReferenceItemHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<ReferenceItem> FindAll(Common.ActionState actionState)
         {
             List<ReferenceItem> list;

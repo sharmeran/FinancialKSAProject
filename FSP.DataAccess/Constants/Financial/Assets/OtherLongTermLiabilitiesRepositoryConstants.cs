@@ -30,5 +30,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_Delete = "OtherLongTermLiabilitiesDelete";
         public const string SP_FindAll = "OtherLongTermLiabilitiesFindAll";
         public const string SP_FindByID = "OtherLongTermLiabilitiesFindByID";
+        public const string SP_FindBYAssetsID = "OtherLongTermLiabilitiesFindByAssetsID";
     }
 }

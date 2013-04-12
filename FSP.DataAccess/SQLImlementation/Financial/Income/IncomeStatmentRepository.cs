@@ -154,12 +154,27 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
 
         private IncomeStatment IncomeStatmentHelper(SqlDataReader reader)
         {
-            IncomeStatment IncomeStatment = new IncomeStatment();
-            IncomeStatment.CompanyFinancialModelID = Convert.ToInt32(reader[IncomeStatmentConstants.CompanyFinancialModelID]);
+            IncomeStatment incomeStatment = new IncomeStatment();
+            incomeStatment.CompanyFinancialModelID = Convert.ToInt32(reader[IncomeStatmentConstants.CompanyFinancialModelID]);
             CompanyFinancialModelRepository companyFinancialModelRepository = new CompanyFinancialModelRepository();
-            IncomeStatment.CompanyFinancialModel = companyFinancialModelRepository.FindByID(Convert.ToInt32(reader[IncomeStatmentConstants.CompanyFinancialModelID]), new ActionState());
-            IncomeStatment.ID = Convert.ToInt32(reader[IncomeStatmentConstants.ID]);
-            return IncomeStatment;
+            incomeStatment.CompanyFinancialModel = companyFinancialModelRepository.FindByID(incomeStatment.CompanyFinancialModelID, new ActionState());
+            incomeStatment.ID = Convert.ToInt32(reader[IncomeStatmentConstants.ID]);
+            GrossProfitRepository grossProfitRepository = new GrossProfitRepository();
+            incomeStatment.GrossProfitList = grossProfitRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            IncomeBeforeXORepository incomeBeforeXORepository = new IncomeBeforeXORepository();
+            incomeStatment.IncomeBeforeXOList = incomeBeforeXORepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            NetIncomeRepository netIncomeRepository = new NetIncomeRepository();
+            incomeStatment.NetIncomeList = netIncomeRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            OperatingIncomeRepository operatingIncomeRepository = new OperatingIncomeRepository();
+            incomeStatment.OperatingIncomeList = operatingIncomeRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            ReferenceItemRepository referenceItemRepository = new ReferenceItemRepository();
+            incomeStatment.ReferenceItemList = referenceItemRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            RevenueRepository revenueRepository = new RevenueRepository();
+            incomeStatment.RevenueList = revenueRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+            TotalFinancialIncomeRepository totalFinancialIncomeRepository = new TotalFinancialIncomeRepository();
+            incomeStatment.TotalFinancialIncomeList = totalFinancialIncomeRepository.FindByIncomeStatmentID(incomeStatment.ID, new ActionState());
+
+            return incomeStatment;
         }
     }
 }

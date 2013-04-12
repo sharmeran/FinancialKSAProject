@@ -16,6 +16,9 @@ using FSP.DataAccess.Constants.Financial;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using FSP.DataAccess.SQLImlementation.CompanyAdministration;
 using FSP.DataAccess.SQLImlementation.Administration;
+using FSP.DataAccess.SQLImlementation.Financial.Income;
+using FSP.DataAccess.SQLImlementation.Financial.CashFlow;
+using FSP.DataAccess.SQLImlementation.Financial.Assets;
 
 namespace FSP.DataAccess.SQLImlementation.Financial
 {
@@ -166,7 +169,7 @@ namespace FSP.DataAccess.SQLImlementation.Financial
                 {
                     while (reader.Read())
                     {
-                        entity = CompanyFinancialModelHelper(reader);
+                        entity = CompanyFinancialModelHelper(reader, false);
                         if (entity != null)
                         {
                             list.Add(entity);
@@ -211,7 +214,7 @@ namespace FSP.DataAccess.SQLImlementation.Financial
                     {
                         actionState.SetSuccess();
                         reader.Read();
-                        entity = CompanyFinancialModelHelper(reader);
+                        entity = CompanyFinancialModelHelper(reader, true);
                     }
                 }
             }
@@ -231,7 +234,7 @@ namespace FSP.DataAccess.SQLImlementation.Financial
             throw new NotImplementedException();
         }
 
-        private CompanyFinancialModel CompanyFinancialModelHelper(SqlDataReader reader)
+        private CompanyFinancialModel CompanyFinancialModelHelper(SqlDataReader reader, bool isFull)
         {
             CompanyFinancialModel entity = new CompanyFinancialModel();
             entity.ID = Convert.ToInt32(reader[CompanyFinancialModelConstants.ID]);
@@ -248,6 +251,15 @@ namespace FSP.DataAccess.SQLImlementation.Financial
             entity.IsReviewed = Convert.ToBoolean(reader[CompanyFinancialModelConstants.IsReviewed]);
             if (reader[CompanyFinancialModelConstants.CreatedDate] != DBNull.Value)
                 entity.CreatedDate = Convert.ToDateTime(reader[CompanyFinancialModelConstants.CreatedDate]);
+            if (isFull)
+            {
+                IncomeStatmentRepository incomeStatmentRepository = new IncomeStatmentRepository();
+                entity.IncomeList = incomeStatmentRepository.FindByCompanyFinancialModelID(entity.ID, new Common.ActionState());
+                CashFlowStatementRepository cashFlowStatementRepository = new CashFlowStatementRepository();
+                entity.CashFlowList = cashFlowStatementRepository.FindByCompanyFinancialModelID(entity.ID, new Common.ActionState());
+                AssetRepository assetRepository = new AssetRepository();
+                entity.AssetsList = assetRepository.FindByCompanyFinancialModelID(entity.ID, new Common.ActionState());
+            }
             return entity;
         }
     }

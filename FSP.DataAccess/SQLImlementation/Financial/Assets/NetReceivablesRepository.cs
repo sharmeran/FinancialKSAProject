@@ -133,6 +133,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<NetReceivables> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<NetReceivables> list;
+            NetReceivables entity;
+            DbCommand cmd;
+
+            list = new List<NetReceivables>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(NetReceivablesRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, NetReceivablesRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = NetReceivablesHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<NetReceivables> FindAll(Common.ActionState actionState)
         {
             List<NetReceivables> list;

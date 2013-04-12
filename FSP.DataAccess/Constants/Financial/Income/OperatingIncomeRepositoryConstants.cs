@@ -31,5 +31,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_Delete = "OperatingIncomeDelete";
         public const string SP_FindAll = "OperatingIncomeFindAll";
         public const string SP_FindByID = "OperatingIncomeFindByID";
+        public const string SP_FindBYIncomeStatmentID = "OperatingIncomeFindByIncomeStatmentID";
     }
 }

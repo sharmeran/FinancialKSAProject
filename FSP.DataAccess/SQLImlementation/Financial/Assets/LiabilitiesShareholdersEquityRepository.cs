@@ -159,6 +159,43 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public List<LiabilitiesShareholdersEquity> FindByAssetsID(int assetsID, Common.ActionState actionState)
+        {
+            List<LiabilitiesShareholdersEquity> list;
+            LiabilitiesShareholdersEquity entity;
+            DbCommand cmd;
+
+            list = new List<LiabilitiesShareholdersEquity>();
+            entity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(LiabilitiesShareholdersEquityRepositoryConstants.SP_FindBYAssetsID);
+                database.AddInParameter(cmd, LiabilitiesShareholdersEquityRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        entity = LiabilitiesShareholdersEquityHelper(reader);
+                        if (entity != null)
+                        {
+                            list.Add(entity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return list;
+        }
+
         public override List<LiabilitiesShareholdersEquity> FindAll(Common.ActionState actionState)
         {
             List<LiabilitiesShareholdersEquity> list;
