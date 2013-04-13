@@ -54,7 +54,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="رأس مال الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Capital"/>
+                <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight"   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Capital" Culture="ar-SA"/>
                 <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Capital"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

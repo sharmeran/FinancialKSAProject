@@ -95,7 +95,7 @@ namespace FSP.Windows.Views.Companies
         {
             if (Validation())
             {
-                company.Capital =(float) Convert.ToDouble(txt_Capital.Text);
+                company.Capital =(float) Convert.ToDouble(txt_Capital.Value);
                 if (!string.IsNullOrEmpty(dtpkr_ClosedJointStockCompany_Ger.Text))
                 {
                     if (Helper.CheckDateGer(dtpkr_ClosedJointStockCompany_Ger.Text))
@@ -254,7 +254,7 @@ namespace FSP.Windows.Views.Companies
             if (grd_Company.SelectedItem != null)
             {
                 company = (Company)grd_Company.SelectedItem;
-                txt_Capital.Text = company.Capital.ToString();
+                txt_Capital.Value =Convert.ToDecimal( company.Capital);
                 txt_Description.Text = company.Description;
                 txt_DescriptionEnglish.Text = company.DescriptionEnglish;
                 txt_Information.Text = company.Information;
@@ -455,7 +455,7 @@ namespace FSP.Windows.Views.Companies
             {
                 float cap;
 
-                if (float.TryParse(txt_Capital.Text, out cap))
+                if (float.TryParse(txt_Capital.Value.ToString(), out cap))
                 {
                     txt_Err_Capital.Text = string.Empty;
                     capital = true;

@@ -135,7 +135,7 @@ namespace FSP.Windows.Views.Companies
                 subsidiaryCompany.Place = txt_Place.Text;
                 subsidiaryCompany.PlaceEnglish = txt_PlaceEnglish.Text;
                 subsidiaryCompany.Sector = (Sector)cmbo_Sector.SelectedItem;
-                subsidiaryCompany.OwnPercentage =(float) Convert.ToDecimal(txt_OwnerPercentage.Text);
+                subsidiaryCompany.OwnPercentage =(float) Convert.ToDecimal(txt_OwnerPercentage.Value);
                 subsidiaryCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
 
                 if (subsidiaryCompany.ID == 0)
@@ -225,7 +225,7 @@ namespace FSP.Windows.Views.Companies
                 txt_InformationEnglish.Text = subsidiaryCompany.NoteEnglish;
                 txt_Name.Text = subsidiaryCompany.Name;
                 txt_NameEnglish.Text = subsidiaryCompany.NameEnglish;
-                txt_OwnerPercentage.Text = subsidiaryCompany.OwnPercentage.ToString();
+                txt_OwnerPercentage.Value =Convert.ToDecimal( subsidiaryCompany.OwnPercentage);
                 txt_Place.Text = subsidiaryCompany.Place;
                 txt_PlaceEnglish.Text = subsidiaryCompany.PlaceEnglish;
                 chk_IsOutKSA.IsChecked = subsidiaryCompany.IsOutKSA;
@@ -372,11 +372,11 @@ namespace FSP.Windows.Views.Companies
                 
             //}
 
-            if (string.IsNullOrEmpty(txt_OwnerPercentage.Text) == false)
+            if (string.IsNullOrEmpty(txt_OwnerPercentage.Value.ToString()) == false)
             {
                 float cap;
 
-                if (float.TryParse(txt_OwnerPercentage.Text, out cap))
+                if (float.TryParse(txt_OwnerPercentage.Value.ToString(), out cap))
                 {
                     txt_Err_OwnerPercentage.Text = string.Empty;
                     capital = true;
