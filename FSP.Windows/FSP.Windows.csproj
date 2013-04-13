@@ -141,6 +141,12 @@
     </Compile>
     <Compile Include="CommonView\CalendarEnum.cs" />
     <Compile Include="CommonView\Helper.cs" />
+    <Compile Include="Reports\CompanyAdministration\CompanyDetailReport.xaml.cs">
+      <DependentUpon>CompanyDetailReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CompanyAdministration\CompanyReport.xaml.cs">
+      <DependentUpon>CompanyReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UICommon\UISecurity.cs" />
     <Compile Include="UIConstants\UIAccessListConstants.cs" />
     <Compile Include="UIConstants\UIPermissionsConstants.cs" />
@@ -199,6 +205,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Reports\CompanyAdministration\CompanyDetailReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CompanyAdministration\CompanyReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\GroupsAdministrationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -348,9 +362,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
