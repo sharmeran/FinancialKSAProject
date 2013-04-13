@@ -65,7 +65,6 @@
     <Compile Include="Constants\Administration\GroupRepositoryConstants.cs" />
     <Compile Include="Constants\Administration\PermissionRepositoryConstants.cs" />
     <Compile Include="Constants\Administration\UserRepositoryConstants.cs" />
-    <Compile Include="Constants\Adoptions\AdoptionMetaRepositoryConstants.cs" />
     <Compile Include="Constants\Adoptions\ISAdoptionRepositoryConstants.cs" />
     <Compile Include="Constants\Adoptions\LateOfAdoptionRepositoryConstants.cs" />
     <Compile Include="Constants\Adoptions\NotAdoptionRepositoryConstants.cs" />

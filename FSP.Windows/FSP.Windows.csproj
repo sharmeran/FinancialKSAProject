@@ -269,7 +269,6 @@
     </EmbeddedResource>
     <Resource Include="Fonts\HamzahMateen.ttf" />
     <Resource Include="Fonts\SC_DUBAI.TTF" />
-    <None Include="FSP.Windows_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
