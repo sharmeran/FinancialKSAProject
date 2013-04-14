@@ -90,6 +90,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -146,6 +147,12 @@
     </Compile>
     <Compile Include="Reports\CompanyAdministration\CompanyReport.xaml.cs">
       <DependentUpon>CompanyReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CompanyAdministration\SectorDetailSectionReport.xaml.cs">
+      <DependentUpon>SectorDetailSectionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CompanyAdministration\SisterCompanyDetailSectionReport.xaml.cs">
+      <DependentUpon>SisterCompanyDetailSectionReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="UICommon\UISecurity.cs" />
     <Compile Include="UIConstants\UIAccessListConstants.cs" />
@@ -210,6 +217,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\CompanyAdministration\CompanyReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CompanyAdministration\SectorDetailSectionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CompanyAdministration\SisterCompanyDetailSectionReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

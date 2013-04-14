@@ -4,8 +4,105 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+              Loaded="UserControl_Loaded" Background="White" Width="800" Height="1020">
     <Grid>
-        <TextBlock Foreground="Black" Text="Test Page" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel>
+            <Border BorderBrush="Black" BorderThickness="3" >
+                <StackPanel Height="110">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="مركز الاستشارات المالية"  FontSize="35" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="تقرير الشركة المفصل"  FontSize="35" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="3" Margin="5" Height="900">
+                <Border BorderBrush="Black" BorderThickness="3" Margin="3">
+                    <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <TextBlock Text="اسم الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                            <TextBlock Name="txt_CompanyName" Text="البتلستيبلتسلبالسيبالسيلبتسلباتلسب " FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <TextBlock Text="وصف الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                            <TextBlock Name="txt_CompanyDesc" Text="البتلستيبلتسلبالسيبالسيلبتسلباتلسب " FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <TextBlock Text="نشاط الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                            <TextBlock Name="txt_CompanySec" Text="البتلستيبلتسلبالسيبالسيلبتسلباتلسب " FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <TextBlock Text="رأس مال الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                            <TextBlock Name="txt_CompanyCapital"  Text="55555 رس " FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <TextBlock Text="تأسيس الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                            <TextBlock Name="txt_CompanyEstablish" FlowDirection="LeftToRight" Text="البتلستيبلتسلبالسيبالسيلبتسلباتلسب " FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20"/>
+                        </StackPanel>
+                        <Rectangle Height="5" Fill="Black" Margin="0,20,0,0"/>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,20,30,0" >
+                            <TextBlock Text="قطاعات الشركة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>                            
+                        </StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="3" Margin="0,5,70,0" Width="615" HorizontalAlignment="Right">
+                            <StackPanel Name="stk_BehaviourDetails">
+                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="اسم القطاع" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="300"/>
+                                    </Border>
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="وصف القطاع" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="300"/>
+                                    </Border>
+                                </StackPanel>
+                                
+                            </StackPanel>
+
+                        </Border>
+                        <Rectangle Height="5" Fill="Black" Margin="0,20,0,0"/>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,20,30,0" >
+                            <TextBlock Text="الشركات الشقيقة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                        </StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="3" Margin="0,5,20,0" Width="620" HorizontalAlignment="Right">
+                            <StackPanel Name="stk_SisterCompany">
+                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="اسم الشركة" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="قطاع الشركة" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="نسبة الملكية" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </Border>
+                        <Rectangle Height="5" Fill="Black" Margin="0,20,0,0"/>
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,20,30,0" >
+                            <TextBlock Text="الشركات التابعة :" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="150"/>
+                        </StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="3" Margin="0,5,20,0" Width="620" HorizontalAlignment="Right">
+                            <StackPanel Name="stk_SubCompany">
+                                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="اسم الشركة" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="قطاع الشركة" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                    <Border BorderBrush="Black" BorderThickness="3" >
+                                        <TextBlock Text="نسبة الملكية" TextAlignment="Center" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" FontSize="20" Width="200"/>
+                                    </Border>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>

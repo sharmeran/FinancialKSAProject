@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Background="Black">
+             Background="Black" Loaded="UserControl_Loaded">
     <Grid>
         <StackPanel >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -12,14 +12,14 @@
             </StackPanel>
             <Border BorderBrush="White" BorderThickness="3" Margin="10">
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10">
-                    <TextBlock Text="السنة" Width="100" Margin="10,0,10,0" Foreground="White" FontSize="20" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadComboBox Name="cmbo_Year" Width="200" Height="25" IsEditable="True" telerik:StyleManager.Theme="Expression_Dark">
+                    <TextBlock Text="الشركة" Width="100" Margin="10,0,10,0" Foreground="White" FontSize="20" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <telerik:RadComboBox Name="cmbo_Company" DisplayMemberPath="Name" Width="200" Height="25" IsEditable="True" telerik:StyleManager.Theme="Expression_Dark" SelectionChanged="cmbo_Year_SelectionChanged">
                     
                 </telerik:RadComboBox>
             </StackPanel>
             </Border>
             <StackPanel>
-                <DocumentViewer Background="Black">                    
+                <DocumentViewer Name="dcViewer" Height="600" Background="Black">                    
                 </DocumentViewer>
             </StackPanel>
         </StackPanel>
