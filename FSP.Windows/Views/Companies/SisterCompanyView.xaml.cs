@@ -106,7 +106,7 @@ namespace FSP.Windows.Views.Companies
                     dtpkr_EstablishGer.Text = ((DateTime)sisterCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_EstablishHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
-                txt_OwnerPercentage.Value = Convert.ToDecimal(sisterCompany.OwnerPercentage);
+                txt_OwnerPercentage.Text =sisterCompany.OwnerPercentage.ToString();
                 chk_IsOutKSA.IsChecked = sisterCompany.IsOutKSA;
             }
         }
@@ -163,7 +163,8 @@ namespace FSP.Windows.Views.Companies
                 sisterCompany.Place = txt_Place.Text;
                 sisterCompany.PlaceEnglish = txt_PlaceEnglish.Text;
                 sisterCompany.Sector = (Sector)cmbo_Sector.SelectedItem;
-                sisterCompany.OwnerPercentage = (float)Convert.ToDecimal(txt_OwnerPercentage.Value);
+                if(txt_OwnerPercentage.Text!=string.Empty)
+                sisterCompany.OwnerPercentage = (float)Convert.ToDecimal(txt_OwnerPercentage.Text);
                 if (sisterCompany.ID == 0)
                 {
                     SisterCompanyDomain sisterCompanyDomain = new SisterCompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);

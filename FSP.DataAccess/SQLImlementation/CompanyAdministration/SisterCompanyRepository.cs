@@ -269,6 +269,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             sisterCompany.PlaceEnglish = reader[SisterCompanyConstants.PlaceEnglish].ToString();
             SectorRepository sectorRepository = new SectorRepository();
             sisterCompany.Sector = sectorRepository.FindByID(Convert.ToInt32(reader[SisterCompanyConstants.Sector]), new Common.ActionState());
+            if (reader[SisterCompanyConstants.OwnPercentage] != DBNull.Value)
             sisterCompany.OwnerPercentage = (float)Convert.ToDecimal(reader[SisterCompanyConstants.OwnPercentage]);
             return sisterCompany;
         }

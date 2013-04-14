@@ -274,6 +274,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             subsidiaryCompany.NameEnglish = reader[SubsidiaryCompanyConstants.NameEnglish].ToString();
             subsidiaryCompany.Note = reader[SubsidiaryCompanyConstants.Note].ToString();
             subsidiaryCompany.NoteEnglish = reader[SubsidiaryCompanyConstants.NoteEnglish].ToString();
+            if (reader[SubsidiaryCompanyConstants.OwnPercentage] != DBNull.Value)
             subsidiaryCompany.OwnPercentage = (float)Convert.ToDecimal(reader[SubsidiaryCompanyConstants.OwnPercentage]);
             subsidiaryCompany.Place = reader[SubsidiaryCompanyConstants.Place].ToString();
             subsidiaryCompany.PlaceEnglish = reader[SubsidiaryCompanyConstants.PlaceEnglish].ToString();

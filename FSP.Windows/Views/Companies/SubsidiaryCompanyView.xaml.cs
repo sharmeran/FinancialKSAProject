@@ -43,7 +43,7 @@ namespace FSP.Windows.Views.Companies
         {
             InitializeComponent();
             CompanyID = companyID;
-           
+
         }
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace FSP.Windows.Views.Companies
             if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SubsidiaryCompanyViewView))
             {
                 grd_SubCompany.Visibility = System.Windows.Visibility.Hidden;
-            } 
+            }
 
             subsidiaryCompanyList = subsidiaryCompanyDomain.FindByCompanyID(CompanyID);
             if (subsidiaryCompanyDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
@@ -120,7 +120,7 @@ namespace FSP.Windows.Views.Companies
                 format.ShortDatePattern = "dd/MM/yyyy";
                 if (dtpkr_EstablishGer.Text != string.Empty)
                 {
-                    
+
                     subsidiaryCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
                 }
                 if (dtpkr_FollowDateGer.Text != string.Empty)
@@ -135,7 +135,8 @@ namespace FSP.Windows.Views.Companies
                 subsidiaryCompany.Place = txt_Place.Text;
                 subsidiaryCompany.PlaceEnglish = txt_PlaceEnglish.Text;
                 subsidiaryCompany.Sector = (Sector)cmbo_Sector.SelectedItem;
-                subsidiaryCompany.OwnPercentage =(float) Convert.ToDecimal(txt_OwnerPercentage.Value);
+                if (txt_OwnerPercentage.Text != string.Empty)
+                    subsidiaryCompany.OwnPercentage = (float)Convert.ToDecimal(txt_OwnerPercentage.Text);
                 subsidiaryCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
 
                 if (subsidiaryCompany.ID == 0)
@@ -225,19 +226,19 @@ namespace FSP.Windows.Views.Companies
                 txt_InformationEnglish.Text = subsidiaryCompany.NoteEnglish;
                 txt_Name.Text = subsidiaryCompany.Name;
                 txt_NameEnglish.Text = subsidiaryCompany.NameEnglish;
-                txt_OwnerPercentage.Value =Convert.ToDecimal( subsidiaryCompany.OwnPercentage);
+                txt_OwnerPercentage.Text = subsidiaryCompany.OwnPercentage.ToString();
                 txt_Place.Text = subsidiaryCompany.Place;
                 txt_PlaceEnglish.Text = subsidiaryCompany.PlaceEnglish;
                 chk_IsOutKSA.IsChecked = subsidiaryCompany.IsOutKSA;
-                if (subsidiaryCompany.EstablishDate!=null)
+                if (subsidiaryCompany.EstablishDate != null)
                 {
-                    dtpkr_EstablishGer.Text = Convert.ToDateTime (subsidiaryCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
+                    dtpkr_EstablishGer.Text = Convert.ToDateTime(subsidiaryCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_EstablishHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
 
-                if (subsidiaryCompany.FollowDate!=null)
+                if (subsidiaryCompany.FollowDate != null)
                 {
-                    dtpkr_FollowDateGer.Text =Convert.ToDateTime (subsidiaryCompany.FollowDate).Date.ToString("dd/MM/yyyy");
+                    dtpkr_FollowDateGer.Text = Convert.ToDateTime(subsidiaryCompany.FollowDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_FollowDateHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
 
@@ -265,12 +266,12 @@ namespace FSP.Windows.Views.Companies
             txt_Err_PlaceEnglish.Text = string.Empty;
             txt_Err_Description.Text = string.Empty;
             txt_Err_DescriptionEnglish.Text = string.Empty;
-            txt_Err_Establish.Text = string.Empty;            
+            txt_Err_Establish.Text = string.Empty;
             txt_Err_Information.Text = string.Empty;
-            txt_Err_InformationEnglish.Text = string.Empty;            
+            txt_Err_InformationEnglish.Text = string.Empty;
             txt_Err_Name.Text = string.Empty;
             txt_Err_NameEnglish.Text = string.Empty;
-            
+
             txt_Information.Text = string.Empty;
             txt_InformationEnglish.Text = string.Empty;
             txt_Name.Text = string.Empty;
@@ -286,7 +287,7 @@ namespace FSP.Windows.Views.Companies
             txt_Err_FollowDate.Text = string.Empty;
             subsidiaryCompany = new SubsidiaryCompany();
             cmbo_Sector.SelectedIndex = 0;
-            
+
         }
 
         private bool Validation()
@@ -299,7 +300,7 @@ namespace FSP.Windows.Views.Companies
             bool descriptionEnglish = false;
             bool informationEnglish = false;
             bool capital = false;
-           // bool followDate = false;
+            // bool followDate = false;
             bool place = false;
             bool placeEnglish = false;
 
@@ -365,18 +366,18 @@ namespace FSP.Windows.Views.Companies
             //}
             //else
             //{
-               
-                
+
+
             //        followDate = false;
             //        txt_Err_FollowDate.Text = "يجب ملئ سنة التبعية";
-                
+
             //}
 
-            if (string.IsNullOrEmpty(txt_OwnerPercentage.Value.ToString()) == false)
+            if (string.IsNullOrEmpty(txt_OwnerPercentage.Text) == false)
             {
                 float cap;
 
-                if (float.TryParse(txt_OwnerPercentage.Value.ToString(), out cap))
+                if (float.TryParse(txt_OwnerPercentage.Text, out cap))
                 {
                     txt_Err_OwnerPercentage.Text = string.Empty;
                     capital = true;
@@ -388,11 +389,7 @@ namespace FSP.Windows.Views.Companies
                 }
 
             }
-            else
-            {
-                capital = false;
-                txt_Err_OwnerPercentage.Text = "يجب ملئ نسبة التبعية الشركة";
-            }
+          
 
             if (string.IsNullOrEmpty(txt_Information.Text) == false)
             {
@@ -448,9 +445,9 @@ namespace FSP.Windows.Views.Companies
                 txt_Err_PlaceEnglish.Text = "يجب ملئ العنوان بالانجليزية";
                 placeEnglish = false;
             }
-            //establishDate & followDate
+            //establishDate & followDate  & capital
 
-            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & capital &  place & placeEnglish;
+            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & place & placeEnglish;
         }
         private string GerToHejri(string date)
         {
