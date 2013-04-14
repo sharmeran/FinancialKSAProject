@@ -51,7 +51,7 @@ namespace FSP.Windows.Reports.CompanyAdministration
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             CompanyDomain domain = new CompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
-            cmbo_Company.ItemsSource = domain.FindAll();
+            cmbo_Company.ItemsSource = domain.FindNotFull();
         }
     }
 }

@@ -250,7 +250,43 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 {
                     while (reader.Read())
                     {
-                        companyEntity = CompanyHelper(reader);
+                        companyEntity = CompanyHelper(reader,true);
+                        if (companyEntity != null)
+                        {
+                            companyList.Add(companyEntity);
+                        }
+                    }
+                    actionState.SetSuccess();
+                }
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.Exception, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+            return companyList;
+        }
+
+        public  List<Company> FindAllParcial(Common.ActionState actionState)
+        {
+            List<Company> companyList;
+            Company companyEntity;
+            DbCommand cmd;
+
+            companyList = new List<Company>();
+            companyEntity = null;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(CompanyRepositoryConstants.SP_FindAll);
+                using (SqlDataReader reader = ((SqlDataReader)((RefCountingDataReader)database.ExecuteReader(cmd)).InnerReader))
+                {
+                    while (reader.Read())
+                    {
+                        companyEntity = CompanyHelper(reader, false);
                         if (companyEntity != null)
                         {
                             companyList.Add(companyEntity);
@@ -295,7 +331,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                     {
                         actionState.SetSuccess();
                         reader.Read();
-                        companyEntity = CompanyHelper(reader);
+                        companyEntity = CompanyHelper(reader,true);
                     }
                 }
             }
@@ -315,38 +351,44 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             throw new NotImplementedException();
         }
 
-        private Company CompanyHelper(SqlDataReader reader)
+        private Company CompanyHelper(SqlDataReader reader, bool isFull)
         {
             Company company = new Company();
+            
             company.ID = Convert.ToInt32(reader[CompanyConstants.ID]);
             company.Name = reader[CompanyConstants.Name].ToString();
             company.Description = reader[CompanyConstants.Description].ToString();
-            if (reader[CompanyConstants.EstablishDate] != DBNull.Value)
-                company.EstablishYear = Convert.ToDateTime(reader[CompanyConstants.EstablishDate]);
-            company.Information = reader[CompanyConstants.Information].ToString();
-            SectorRepository sectorRepository = new SectorRepository();
-            company.Sector = sectorRepository.FindByID(Convert.ToInt32(reader[CompanyConstants.SectorID]), new Common.ActionState());
-            company.NameEnglish = reader[CompanyConstants.NameEnglish].ToString();
-            company.DescriptionEnglish = reader[CompanyConstants.DescriptionEnglish].ToString();
-            company.InformationEnglish = reader[CompanyConstants.InformationEnglish].ToString();
-            company.Capital = (float)Convert.ToDouble( reader[CompanyConstants.Capital]);
-            if (reader[CompanyConstants.WithLimitedLiability] != DBNull.Value)
-                company.WithLimitedLiability = Convert.ToDateTime(reader[CompanyConstants.WithLimitedLiability]);
-            if (reader[CompanyConstants.ClosedJointStockCompany] != DBNull.Value)
-                company.ClosedJointStockCompany = Convert.ToDateTime(reader[CompanyConstants.ClosedJointStockCompany]);
-            if (reader[CompanyConstants.IPO] != DBNull.Value)
-                company.IPO = Convert.ToDateTime(reader[CompanyConstants.IPO]);
-            if (reader[CompanyConstants.GeneralCompany] != DBNull.Value)
-                company.GeneralCompany = Convert.ToDateTime(reader[CompanyConstants.GeneralCompany]);
-            BehaviourRepository behaviourRepository = new BehaviourRepository();
-            company.BehaviourList = behaviourRepository.FindByCompanyID(company.ID, new Common.ActionState());
-            SubsidiaryCompanyRepository subsidiaryCompanyRepository = new SubsidiaryCompanyRepository();
-            company.SubsidiaryCompanyList = subsidiaryCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
-            SisterCompanyRepository sisterCompanyRepository = new SisterCompanyRepository();
-            company.SisterCompanyList = sisterCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
+            if (isFull)
+            {
+                if (reader[CompanyConstants.EstablishDate] != DBNull.Value)
+                    company.EstablishYear = Convert.ToDateTime(reader[CompanyConstants.EstablishDate]);
+                company.Information = reader[CompanyConstants.Information].ToString();
+                SectorRepository sectorRepository = new SectorRepository();
+                company.Sector = sectorRepository.FindByID(Convert.ToInt32(reader[CompanyConstants.SectorID]), new Common.ActionState());
+                company.NameEnglish = reader[CompanyConstants.NameEnglish].ToString();
+                company.DescriptionEnglish = reader[CompanyConstants.DescriptionEnglish].ToString();
+                company.InformationEnglish = reader[CompanyConstants.InformationEnglish].ToString();
+                company.Capital = (float)Convert.ToDouble(reader[CompanyConstants.Capital]);
+                if (reader[CompanyConstants.WithLimitedLiability] != DBNull.Value)
+                    company.WithLimitedLiability = Convert.ToDateTime(reader[CompanyConstants.WithLimitedLiability]);
+                if (reader[CompanyConstants.ClosedJointStockCompany] != DBNull.Value)
+                    company.ClosedJointStockCompany = Convert.ToDateTime(reader[CompanyConstants.ClosedJointStockCompany]);
+                if (reader[CompanyConstants.IPO] != DBNull.Value)
+                    company.IPO = Convert.ToDateTime(reader[CompanyConstants.IPO]);
+                if (reader[CompanyConstants.GeneralCompany] != DBNull.Value)
+                    company.GeneralCompany = Convert.ToDateTime(reader[CompanyConstants.GeneralCompany]);
+                BehaviourRepository behaviourRepository = new BehaviourRepository();
+                company.BehaviourList = behaviourRepository.FindByCompanyID(company.ID, new Common.ActionState());
+                SubsidiaryCompanyRepository subsidiaryCompanyRepository = new SubsidiaryCompanyRepository();
+                company.SubsidiaryCompanyList = subsidiaryCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
+                SisterCompanyRepository sisterCompanyRepository = new SisterCompanyRepository();
+                company.SisterCompanyList = sisterCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
 
-            company.Rank = Convert.ToInt32(reader[CompanyConstants.Rank]);
+                company.Rank = Convert.ToInt32(reader[CompanyConstants.Rank]);
+            }
             return company;
         }
+
+
     }
 }
