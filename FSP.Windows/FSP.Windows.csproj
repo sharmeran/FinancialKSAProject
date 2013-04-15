@@ -103,6 +103,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\Telerik\RadControls for WPF Q3 2012\Binaries\WPF45\Telerik.Windows.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="telerik.windows.controls.chart, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="telerik.windows.controls.charting, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Data, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\Telerik\RadControls for WPF Q3 2012\Binaries\WPF45\Telerik.Windows.Controls.Data.dll</HintPath>
@@ -148,6 +150,11 @@
     <Compile Include="Reports\CompanyAdministration\CompanyReport.xaml.cs">
       <DependentUpon>CompanyReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CompanyAdministration\CompanyReportChart.xaml.cs">
+      <DependentUpon>CompanyReportChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CompanyAdministration\MainViewModel.cs" />
+    <Compile Include="Reports\CompanyAdministration\MonthRevenue.cs" />
     <Compile Include="Reports\CompanyAdministration\SectorDetailSectionReport.xaml.cs">
       <DependentUpon>SectorDetailSectionReport.xaml</DependentUpon>
     </Compile>
@@ -217,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\CompanyAdministration\CompanyReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CompanyAdministration\CompanyReportChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
