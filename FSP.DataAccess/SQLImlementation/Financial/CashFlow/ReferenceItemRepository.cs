@@ -144,6 +144,38 @@ namespace FSP.DataAccess.SQLImlementation.Financial.CashFlow
             }
         }
 
+        public void DeleteByCashFlowStatmentID(int cashFlowStatmentID, ActionState actionState)
+        {
+            int spResult;
+            DbCommand cmd;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(ReferenceItemRepositoryConstants.SP_DeleteBYCashFlowStatmentID);
+                database.AddInParameter(cmd, ReferenceItemRepositoryConstants.CashFlowStatementID, DbType.Int32, cashFlowStatmentID);
+
+
+                spResult = database.ExecuteNonQuery(cmd);
+                if (spResult > 0)
+                {
+                    actionState.SetSuccess();
+                }
+                else
+                {
+                    actionState.SetFail(ActionStatusEnum.CannotDelete, LocalizationConstants.Err_CannotDelete);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.CannotDelete, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+        }
+
         public List<ReferenceItem> FindByCashFlowStatmentID(int cashFlowStatmentID, Common.ActionState actionState)
         {
             List<ReferenceItem> list;

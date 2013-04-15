@@ -135,6 +135,38 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public void DeleteByAssetsID(int assetsID, ActionState actionState)
+        {
+            int spResult;
+            DbCommand cmd;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(CurrentReceivablesRepositoryConstants.SP_DeleteBYAssetsID);
+                database.AddInParameter(cmd, CurrentReceivablesRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+
+
+                spResult = database.ExecuteNonQuery(cmd);
+                if (spResult > 0)
+                {
+                    actionState.SetSuccess();
+                }
+                else
+                {
+                    actionState.SetFail(ActionStatusEnum.CannotDelete, LocalizationConstants.Err_CannotDelete);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.CannotDelete, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+        }
+
         public List<CurrentReceivables> FindByAssetsID(int assetsID, Common.ActionState actionState)
         {
             List<CurrentReceivables> list;

@@ -33,5 +33,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_FindAll = "ReferenceItemsFindAll";
         public const string SP_FindByID = "ReferenceItemsFindByID";
         public const string SP_FindBYIncomeStatmentID = "ReferenceItemsFindByIncomeStatmentID";
+        public const string SP_DeleteBYIncomeStatmentID = "ReferenceItemsDeleteByIncomeStatmentID";
     }
 }

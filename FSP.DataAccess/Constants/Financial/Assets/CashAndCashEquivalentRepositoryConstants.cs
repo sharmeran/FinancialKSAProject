@@ -25,5 +25,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_FindAll = "CashAndCashEquivalentFindAll";
         public const string SP_FindByID = "CashAndCashEquivalentFindByID";
         public const string SP_FindBYAssetsID = "CashAndCashEquivalentFindByAssetsID";
+        public const string SP_DeleteBYAssetsID = "CashAndCashEquivalentDeleteByAssetsID";
     }
 }

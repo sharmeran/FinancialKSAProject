@@ -165,6 +165,38 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Assets
             }
         }
 
+        public void DeleteByAssetsID(int assetsID, ActionState actionState)
+        {
+            int spResult;
+            DbCommand cmd;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(TotalLongTermDebtRepositoryConstants.SP_DeleteBYAssetsID);
+                database.AddInParameter(cmd, TotalLongTermDebtRepositoryConstants.AssetsID, DbType.Int32, assetsID);
+
+
+                spResult = database.ExecuteNonQuery(cmd);
+                if (spResult > 0)
+                {
+                    actionState.SetSuccess();
+                }
+                else
+                {
+                    actionState.SetFail(ActionStatusEnum.CannotDelete, LocalizationConstants.Err_CannotDelete);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.CannotDelete, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+        }
+
         public List<TotalLongTermDebt> FindByAssetsID(int assetsID, Common.ActionState actionState)
         {
             List<TotalLongTermDebt> list;

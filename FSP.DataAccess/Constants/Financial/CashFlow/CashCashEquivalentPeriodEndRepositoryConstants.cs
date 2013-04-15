@@ -21,5 +21,6 @@ namespace FSP.DataAccess.Constants.Financial.CashFlow
         public const string SP_FindAll = "CashCashEquivalentPeriodEndFindAll";
         public const string SP_FindByID = "CashCashEquivalentPeriodEndFindByID";
         public const string SP_FindBYCashFlowStatmentID = "CashCashEquivalentPeriodEndFindByCashFlowStatementID";
+        public const string SP_DeleteBYCashFlowStatmentID = "CashCashEquivalentPeriodEndDeleteByCashFlowStatementID";
     }
 }

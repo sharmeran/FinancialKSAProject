@@ -21,5 +21,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_FindAll = "RevenueFindAll";
         public const string SP_FindByID = "RevenueFindByID";
         public const string SP_FindBYIncomeStatmentID = "RevenueFindByIncomeStatmentID";
+        public const string SP_DeleteBYIncomeStatmentID = "RevenueDeleteByIncomeStatmentID";
     }
 }

@@ -154,6 +154,38 @@ namespace FSP.DataAccess.SQLImlementation.Financial.Income
             }
         }
 
+        public void DeleteByIncomeStatmentID(int incomeStatmentID, ActionState actionState)
+        {
+            int spResult;
+            DbCommand cmd;
+
+            try
+            {
+                cmd = database.GetStoredProcCommand(OperatingIncomeRepositoryConstants.SP_DeleteBYIncomeStatmentID);
+                database.AddInParameter(cmd, OperatingIncomeRepositoryConstants.IncomeStatmentID, DbType.Int32, incomeStatmentID);
+
+
+                spResult = database.ExecuteNonQuery(cmd);
+                if (spResult > 0)
+                {
+                    actionState.SetSuccess();
+                }
+                else
+                {
+                    actionState.SetFail(ActionStatusEnum.CannotDelete, LocalizationConstants.Err_CannotDelete);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                actionState.SetFail(ActionStatusEnum.CannotDelete, ex.Message);
+            }
+            finally
+            {
+                cmd = null;
+            }
+        }
+
         public List<OperatingIncome> FindByIncomeStatmentID(int incomeStatmentID, Common.ActionState actionState)
         {
             List<OperatingIncome> list;

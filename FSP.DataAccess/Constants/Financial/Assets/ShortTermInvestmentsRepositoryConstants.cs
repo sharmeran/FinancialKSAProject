@@ -23,5 +23,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_FindAll = "ShortTermInvestmentsFindAll";
         public const string SP_FindByID = "ShortTermInvestmentsFindByID";
         public const string SP_FindBYAssetsID = "ShortTermInvestmentsFindByAssetsID";
+        public const string SP_DeleteBYAssetsID = "ShortTermInvestmentsDeleteByAssetsID";
     }
 }

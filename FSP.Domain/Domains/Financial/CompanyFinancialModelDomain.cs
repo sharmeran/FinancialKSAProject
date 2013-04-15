@@ -220,9 +220,97 @@ namespace FSP.Domain.Domains.Financial
 
         public override void Delete(CompanyFinancialModel entity)
         {
-            DBRepository.Delete(entity, ActionState);
+            #region Income List Delete
+            IncomeStatmentRepository incomeStatmentRepository = new IncomeStatmentRepository();
+            if (entity.IncomeList == null || entity.IncomeList.Count == 0)
+            {
+                entity.IncomeList = incomeStatmentRepository.FindByCompanyFinancialModelID(entity.ID, ActionState);
+            }
+            for (int i = 0; i < entity.IncomeList.Count; i++)
+            {
+                GrossProfitRepository grossProfitRepository = new GrossProfitRepository();
+                grossProfitRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                IncomeBeforeXORepository incomeBeforeXORepository = new IncomeBeforeXORepository();
+                incomeBeforeXORepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                NetIncomeRepository netIncomeRepository = new NetIncomeRepository();
+                netIncomeRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                OperatingIncomeRepository operatingIncomeRepository = new OperatingIncomeRepository();
+                operatingIncomeRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                FSP.DataAccess.SQLImlementation.Financial.Income.ReferenceItemRepository referenceItemRepository = new FSP.DataAccess.SQLImlementation.Financial.Income.ReferenceItemRepository();
+                referenceItemRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                RevenueRepository revenueRepository = new RevenueRepository();
+                revenueRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+                TotalFinancialIncomeRepository totalFinancialIncomeRepository = new TotalFinancialIncomeRepository();
+                totalFinancialIncomeRepository.DeleteByIncomeStatmentID(entity.IncomeList[i].ID, ActionState);
+            }
+            incomeStatmentRepository.DeleteByCompanyFinancialModelID(entity.ID, ActionState);
+            #endregion
 
-            //Here code to Delete all childs for the entity
+            #region CashFlow List Delete
+            CashFlowStatementRepository cashFlowStatementRepository = new CashFlowStatementRepository();
+            if (entity.CashFlowList == null || entity.CashFlowList.Count == 0)
+            {
+                entity.CashFlowList = cashFlowStatementRepository.FindByCompanyFinancialModelID(entity.ID, ActionState);
+            }
+            for (int i = 0; i < entity.CashFlowList.Count; i++)
+            {
+                CashCashEquivalentPeriodEndRepository cashCashEquivalentPeriodEndRepository = new CashCashEquivalentPeriodEndRepository();
+                cashCashEquivalentPeriodEndRepository.DeleteByCashFlowStatmentID(entity.CashFlowList[i].ID, ActionState);
+                CashFlowsFromInvestingActivitiesRepository cashFlowsFromInvestingActivitiesRepository = new CashFlowsFromInvestingActivitiesRepository();
+                cashFlowsFromInvestingActivitiesRepository.DeleteByCashFlowStatmentID(entity.CashFlowList[i].ID, ActionState);
+                CashFlowsFromOperatingActivitiesRepository cashFlowsFromOperatingActivitiesRepository = new CashFlowsFromOperatingActivitiesRepository();
+                cashFlowsFromOperatingActivitiesRepository.DeleteByCashFlowStatmentID(entity.CashFlowList[i].ID, ActionState);
+                CashFromFinancingActivitiesRepository cashFromFinancingActivitiesRepository = new CashFromFinancingActivitiesRepository();
+                cashFromFinancingActivitiesRepository.DeleteByCashFlowStatmentID(entity.CashFlowList[i].ID, ActionState);
+                FSP.DataAccess.SQLImlementation.Financial.CashFlow.ReferenceItemRepository referenceItemRepository = new FSP.DataAccess.SQLImlementation.Financial.CashFlow.ReferenceItemRepository();
+                referenceItemRepository.DeleteByCashFlowStatmentID(entity.CashFlowList[i].ID, ActionState);
+            }
+            cashFlowStatementRepository.DeleteByCompanyFinancialModelID(entity.ID, ActionState);
+            #endregion
+
+            #region Assets List Delete
+            AssetRepository assetRepository = new AssetRepository();
+            if (entity.AssetsList == null || entity.AssetsList.Count == 0)
+            {
+                entity.AssetsList = assetRepository.FindByCompanyFinancialModelID(entity.ID, ActionState);
+            }
+            for (int i = 0; i < entity.AssetsList.Count; i++)
+            {
+                AssetReferenceItemRepository assetReferenceItemRepository = new AssetReferenceItemRepository();
+                assetReferenceItemRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                CashAndCashEquivalentRepository cashAndCashEquivalentRepository = new CashAndCashEquivalentRepository();
+                cashAndCashEquivalentRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                CurrentReceivablesRepository currentReceivablesRepository = new CurrentReceivablesRepository();
+                currentReceivablesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                IntangiblesRepository intangiblesRepository = new IntangiblesRepository();
+                intangiblesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                LiabilitiesShareholdersEquityRepository liabilitiesShareholdersEquityRepository = new LiabilitiesShareholdersEquityRepository();
+                liabilitiesShareholdersEquityRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                NetReceivablesRepository netReceivablesRepository = new NetReceivablesRepository();
+                netReceivablesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                OtherLongTermAssetsRepository otherLongTermAssetsRepository = new OtherLongTermAssetsRepository();
+                otherLongTermAssetsRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                OtherLongTermLiabilitiesRepository otherLongTermLiabilitiesRepository = new OtherLongTermLiabilitiesRepository();
+                otherLongTermLiabilitiesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                OtherShortTermLiabilitiesRepository otherShortTermLiabilitiesRepository = new OtherShortTermLiabilitiesRepository();
+                otherShortTermLiabilitiesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                ShortTermInvestmentsRepository shortTermInvestmentsRepository = new ShortTermInvestmentsRepository();
+                shortTermInvestmentsRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                TotalCurrentAssetsRepository totalCurrentAssetsRepository = new TotalCurrentAssetsRepository();
+                totalCurrentAssetsRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                TotalCurrentLiabilitiesRepository totalCurrentLiabilitiesRepository = new TotalCurrentLiabilitiesRepository();
+                totalCurrentLiabilitiesRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                TotalLiabilitiesAndProvisionsRepository totalLiabilitiesAndProvisionsRepository = new TotalLiabilitiesAndProvisionsRepository();
+                totalLiabilitiesAndProvisionsRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                TotalLongTermDebtRepository totalLongTermDebtRepository = new TotalLongTermDebtRepository();
+                totalLongTermDebtRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+                TotalLongTermInvestmentRepository totalLongTermInvestmentRepository = new TotalLongTermInvestmentRepository();
+                totalLongTermInvestmentRepository.DeleteByAssetsID(entity.AssetsList[i].ID, ActionState);
+            }
+            assetRepository.DeleteByCompanyFinancialModelID(entity.ID, ActionState);
+            #endregion
+
+            DBRepository.Delete(entity, ActionState);
         }
 
         public override void Update(CompanyFinancialModel entity)

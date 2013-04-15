@@ -35,5 +35,6 @@ namespace FSP.DataAccess.Constants.Financial.Assets
         public const string SP_FindAll = "LiabilitiesShareholdersEquityFindAll";
         public const string SP_FindByID = "LiabilitiesShareholdersEquityFindByID";
         public const string SP_FindBYAssetsID = "LiabilitiesShareholdersEquityFindByAssetsID";
+        public const string SP_DeleteBYAssetsID = "LiabilitiesShareholdersEquityDeleteByAssetsID";
     }
 }

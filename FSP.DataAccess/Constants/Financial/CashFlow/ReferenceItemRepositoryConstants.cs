@@ -27,5 +27,6 @@ namespace FSP.DataAccess.Constants.Financial.CashFlow
         public const string SP_FindAll = "ReferenceItemFindAll";
         public const string SP_FindByID = "ReferenceItemFindByID";
         public const string SP_FindBYCashFlowStatmentID = "ReferenceItemFindByCashFlowStatementID";
+        public const string SP_DeleteBYCashFlowStatmentID = "ReferenceItemDeleteByCashFlowStatementID";
     }
 }

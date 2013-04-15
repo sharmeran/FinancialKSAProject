@@ -36,5 +36,6 @@ namespace FSP.DataAccess.Constants.Financial.Income
         public const string SP_FindAll = "NetIncomeFindAll";
         public const string SP_FindByID = "NetIncomeFindByID";
         public const string SP_FindBYIncomeStatmentID = "NetIncomeFindByIncomeStatmentID";
+        public const string SP_DeleteBYIncomeStatmentID = "NetIncomeDeleteByIncomeStatmentID";
     }
 }

@@ -25,5 +25,6 @@ namespace FSP.DataAccess.Constants.Financial.CashFlow
         public const string SP_FindAll = "CashFlowsFromInvestingActivitiesFindAll";
         public const string SP_FindByID = "CashFlowsFromInvestingActivitiesFindByID";
         public const string SP_FindBYCashFlowStatmentID = "CashFlowsFromInvestingActivitiesFindByCashFlowStatementID";
+        public const string SP_DeleteBYCashFlowStatmentID = "CashFlowsFromInvestingActivitiesDeleteByCashFlowStatementID";
     }
 }
