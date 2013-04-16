@@ -19,5 +19,6 @@ namespace FSP.Common.Constants.CompanyAdministration
        public const string Company = "Company";
        public const string IsOutKsa = "IsOutKsa";
        public const string Sector = "Sector";
+       public const string OwnPercentage = "OwnPercentage";
     }
 }

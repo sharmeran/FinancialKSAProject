@@ -43,7 +43,11 @@
                 <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_PlaceEnglish"/>
                 <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_PlaceEnglish"/>
             </StackPanel>
-            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="نسبة الملكية"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <telerik:RadWatermarkTextBox FlowDirection="RightToLeft"   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_OwnerPercentage" />
+                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_OwnerPercentage"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="تأسيس الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_EstablishGer" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
@@ -68,7 +72,7 @@
                 </telerik:RadButton>
             </StackPanel>
             <StackPanel Margin="0,10,0,0">
-                <telerik:RadGridView Name="grd_SisterCompany" MouseDoubleClick="grd_SisterCompany_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" Height="200" Width="450" HorizontalAlignment="Left">
+                <telerik:RadGridView Name="grd_SisterCompany" MouseDoubleClick="grd_SisterCompany_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" HorizontalAlignment="Left">
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" Width="120"/>
                         <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://shemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-            Width="600" Height="600" Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
+            Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,47 +14,53 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="اسم المستخدم" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Username" />
+                <TextBlock Name="txt_Err_Username" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="كلمة المرور" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Password" />
+                <PasswordBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Password" />
+                <TextBlock Name="txt_Err_Password" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="إعادة كلمة المرور" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_RePassword" />
+                <PasswordBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_RePassword" />
+                <TextBlock Name="txt_Err_RePassword" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="الاسم" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_FullName" />
+                <TextBlock Name="txt_Err_FullName" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="اسم المجموعة" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadComboBox Name="cmbo_Group" DisplayMemberPath="Name" telerik:StyleManager.Theme="Expression_Dark" Width="200">
+                <telerik:RadComboBox Name="cmbo_Group" DisplayMemberPath="Description" SelectedIndex="0" telerik:StyleManager.Theme="Expression_Dark" Width="200">
                 </telerik:RadComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="رقم الهاتف" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Phone" />
+                <TextBlock Name="txt_Err_Phone" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock Text="عنوان البريد الالكتروني" Width="100" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 <telerik:RadWatermarkTextBox Width="200" telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Email" />
+                <TextBlock Name="txt_Err_Email" Foreground="Red" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="100,5,0,0">
-                <telerik:RadButton  Name="btn_Save" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" >
+                <telerik:RadButton  Name="btn_Save" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Click="btn_Save_Click" >
                     <TextBlock Text="حفظ" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 </telerik:RadButton>
-                <telerik:RadButton  Name="btn_Clear" Margin="5,0,0,0" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" >
+                <telerik:RadButton  Name="btn_Clear" Margin="5,0,0,0" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Click="btn_Clear_Click" >
                     <TextBlock Text="مسح" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 </telerik:RadButton>
-                <telerik:RadButton  Name="btn_Delete" Margin="5,0,0,0" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" >
+                <telerik:RadButton  Name="btn_Delete" Margin="5,0,0,0" Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Click="btn_Delete_Click" >
                     <TextBlock Text="حذف" Foreground="White" FontSize="14" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                 </telerik:RadButton>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="100,5,0,0">
                 
             </StackPanel>
-            <telerik:RadGridView Name="grd_Users" telerik:StyleManager.Theme="Expression_Dark" AutoGenerateColumns="False" IsReadOnly="True">
+            <telerik:RadGridView Name="grd_Users" telerik:StyleManager.Theme="Expression_Dark" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="grd_Users_MouseDoubleClick">
                 <telerik:RadGridView.Columns>
                     <telerik:GridViewDataColumn Header="اسم المستخدم" DataMemberBinding="{Binding Username}" Width="100"/>
                     <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding FullName}" Width="150"/>                    

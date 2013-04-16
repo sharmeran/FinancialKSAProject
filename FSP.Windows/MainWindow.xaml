@@ -10,7 +10,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="مركز الدراسات الإستراتيجية" Grid.Row="0" VerticalAlignment="Bottom" Foreground="White" FontFamily="/FSP.Windows;component/Fonts/#SC_DUBAI" HorizontalAlignment="Center" FontSize="50"  FontWeight="ExtraBlack"/>
             <!--<Administration:Login  Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-        <Administration:GroupsAdministrationView   Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Administration:Login   Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
         
         
         <!--<Zakat:ZakatMainView Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />-->

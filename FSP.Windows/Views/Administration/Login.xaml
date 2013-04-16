@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="600">
+             d:DesignHeight="350" d:DesignWidth="600" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/FSP.Windows;component/Icons/welcomescreenbackground.png"/>
@@ -30,7 +30,7 @@
                 <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
                     <TextBlock Text="كلمة المرور" Foreground="White" Width="70" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                     <Border Name="brdr_Password" BorderBrush="White" CornerRadius="5" BorderThickness="1" Width="300" Margin="30,2,0,0" >
-                        <PasswordBox telerik:StyleManager.Theme="Expression_Dark" Height="25" Name="txt_Password"/>
+                        <PasswordBox telerik:StyleManager.Theme="Expression_Dark" KeyDown="txt_Password_KeyDown" Height="25" Name="txt_Password"/>
                     </Border>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="130,20,0,0">

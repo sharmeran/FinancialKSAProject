@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
+using FSP.Common.Enums;
+using FSP.Windows.UICommon;
+using FSP.Windows.UIConstants;
 
 namespace FSP.Windows.Views.Zakat
 {
@@ -25,16 +28,17 @@ namespace FSP.Windows.Views.Zakat
         public ZakatMainView()
         {
             InitializeComponent();
+           
         }
-        SectorDomain sectorDomain = new SectorDomain(1, Common.Enums.LanguagesEnum.Arabic);
-        CompanyDomain companyDomain = new CompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);        
+        SectorDomain sectorDomain = new SectorDomain(1, LanguagesEnum.Arabic);
+        CompanyDomain companyDomain = new CompanyDomain(1, LanguagesEnum.Arabic);        
         List<Sector> sectorList = new List<Sector>();
         List<Company> companyList = new List<Company>();
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
             sectorList = sectorDomain.FindAll();
-            if (sectorDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
+            if (sectorDomain.ActionState.Status != ActionStatusEnum.NoError)
             {
                 MessageBox.Show(sectorDomain.ActionState.Result, "", MessageBoxButton.OK, MessageBoxImage.Error);
             }

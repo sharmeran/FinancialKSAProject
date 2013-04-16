@@ -45,7 +45,7 @@
                 </telerik:RadButton>
             </StackPanel>
             <StackPanel Margin="0,10,0,0">
-                <telerik:RadGridView Height="300" Name="grd_BehaviourJudgment" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark" MouseDoubleClick="grd_BehaviourJudgment_MouseDoubleClick" IsFilteringAllowed="False">
+                <telerik:RadGridView  Name="grd_BehaviourJudgment" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark" MouseDoubleClick="grd_BehaviourJudgment_MouseDoubleClick" IsFilteringAllowed="False">
                     <telerik:RadGridView.Columns>
                         <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" Width="120"/>
                         <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>

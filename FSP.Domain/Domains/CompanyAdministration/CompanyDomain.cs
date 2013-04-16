@@ -28,6 +28,13 @@ namespace FSP.Domain.Domains.CompanyAdministration
            
         }
 
+
+        public List<Company> FindNotFull()
+        {
+            CompanyRepository companyRepository = new CompanyRepository();
+           return companyRepository.FindAllParcial(ActionState);
+        }
+
         public override void Delete(Company entity)
         {
             DBRepository.Delete(entity, ActionState);

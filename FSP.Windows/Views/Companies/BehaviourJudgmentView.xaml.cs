@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
+using FSP.Windows.UICommon;
+using FSP.Windows.UIConstants;
 
 namespace FSP.Windows.Views.Companies
 {
@@ -25,6 +27,7 @@ namespace FSP.Windows.Views.Companies
         public BehaviourJudgmentView()
         {
             InitializeComponent();
+            
         }
 
         BehaviorJudgmentDomain behaviorJudgmentDomain = new BehaviorJudgmentDomain(1, Common.Enums.LanguagesEnum.Arabic);
@@ -32,6 +35,19 @@ namespace FSP.Windows.Views.Companies
         BehaviorJudgment behaviorJudgment = new BehaviorJudgment();
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.BehaviourJudgmentViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.BehaviourJudgmentViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.BehaviourJudgmentViewView))
+            {
+                grd_BehaviourJudgment.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             behaviorJudgmentList = behaviorJudgmentDomain.FindAll();
             if (behaviorJudgmentDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
             {

@@ -17,6 +17,8 @@ using FSP.Common.Entites.CompanyAdministration;
 using FSP.Domain.Domains.CompanyAdministration;
 using FSP.Windows.CommonView;
 using Telerik.Windows.Controls;
+using FSP.Windows.UIConstants;
+using FSP.Windows.UICommon;
 
 namespace FSP.Windows.Views.Companies
 {
@@ -28,6 +30,7 @@ namespace FSP.Windows.Views.Companies
         public SisterCompanyView()
         {
             InitializeComponent();
+            
         }
         int CompanyID = 0;
         SisterCompany sisterCompany = new SisterCompany();
@@ -38,9 +41,23 @@ namespace FSP.Windows.Views.Companies
         {
             InitializeComponent();
             CompanyID = companyID;
+           
         }
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
         {
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewAdd))
+            {
+                btn_Save.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewDelete))
+            {
+                btn_Delete.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (!UISecurity.IsHasPermission(UISecurity.UserEntity.Group.Permissions, UIPermissionsConstants.SisterCompanyViewView))
+            {
+                grd_SisterCompany.Visibility = System.Windows.Visibility.Hidden;
+            }
+
             SisterCompanyDomain sisterCompanyDomain = new SisterCompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
             sisterCompanyList = sisterCompanyDomain.FindByCompanyID(CompanyID);
             if (sisterCompanyDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
@@ -84,11 +101,12 @@ namespace FSP.Windows.Views.Companies
                         break;
                     }
                 }
-                if (sisterCompany.EstablishDate.Year != 1)
+                if (sisterCompany.EstablishDate!= null  )
                 {
-                    dtpkr_EstablishGer.Text = sisterCompany.EstablishDate.Date.ToString("dd/MM/yyyy");
+                    dtpkr_EstablishGer.Text = ((DateTime)sisterCompany.EstablishDate).Date.ToString("dd/MM/yyyy");
                     dtpkr_EstablishHij.Text = GerToHejri(dtpkr_EstablishGer.Text);
                 }
+                txt_OwnerPercentage.Text =sisterCompany.OwnerPercentage.ToString();
                 chk_IsOutKSA.IsChecked = sisterCompany.IsOutKSA;
             }
         }
@@ -133,16 +151,20 @@ namespace FSP.Windows.Views.Companies
                 sisterCompany.CompanyID = CompanyID;
                 sisterCompany.Description = txt_Description.Text;
                 sisterCompany.DescriptionEnglish = txt_DescriptionEnglish.Text;
-                DateTimeFormatInfo format = new DateTimeFormatInfo();
-                format.ShortDatePattern = "dd/MM/yyyy";
-                sisterCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
+                if (dtpkr_EstablishGer.Text != string.Empty)
+                {
+                    DateTimeFormatInfo format = new DateTimeFormatInfo();
+                    format.ShortDatePattern = "dd/MM/yyyy";
+                    sisterCompany.EstablishDate = Convert.ToDateTime(dtpkr_EstablishGer.Text, format);
+                }
                 sisterCompany.IsOutKSA = Convert.ToBoolean(chk_IsOutKSA.IsChecked);
                 sisterCompany.Name = txt_Name.Text;
                 sisterCompany.NameEnglish = txt_NameEnglish.Text;
                 sisterCompany.Place = txt_Place.Text;
                 sisterCompany.PlaceEnglish = txt_PlaceEnglish.Text;
                 sisterCompany.Sector = (Sector)cmbo_Sector.SelectedItem;
-
+                if(txt_OwnerPercentage.Text!=string.Empty)
+                sisterCompany.OwnerPercentage = (float)Convert.ToDecimal(txt_OwnerPercentage.Text);
                 if (sisterCompany.ID == 0)
                 {
                     SisterCompanyDomain sisterCompanyDomain = new SisterCompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
@@ -242,7 +264,7 @@ namespace FSP.Windows.Views.Companies
         {
             bool name = false;
             bool description = false;
-            bool establishDate = false;
+           // bool establishDate = false;
             bool information = false;
             bool nameEnglish = false;
             bool descriptionEnglish = false;
@@ -279,24 +301,24 @@ namespace FSP.Windows.Views.Companies
                 descriptionEnglish = false;
                 txt_Err_DescriptionEnglish.Text = "يجب ملئ الوصف بالنجليزي";
             }
-            if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
-            {
-                if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
-                {
-                    establishDate = true;
-                    txt_Err_Establish.Text = string.Empty;
-                }
-                else
-                {
-                    establishDate = false;
-                    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-                }
-            }
-            else
-            {
-                establishDate = false;
-                txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
-            }
+            //if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
+            //{
+            //    if (Helper.CheckDateGer(dtpkr_EstablishGer.Text))
+            //    {
+            //        establishDate = true;
+            //        txt_Err_Establish.Text = string.Empty;
+            //    }
+            //    else
+            //    {
+            //        establishDate = false;
+            //        txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //    }
+            //}
+            //else
+            //{
+            //    establishDate = false;
+            //    txt_Err_Establish.Text = "يجب ملئ سنة التأسيس";
+            //}
 
             if (string.IsNullOrEmpty(txt_Place.Text) == false)
             {
@@ -330,7 +352,7 @@ namespace FSP.Windows.Views.Companies
                 txt_Err_NameEnglish.Text = "يجب ملئ الاسم بالانجليزية";
                 nameEnglish = false;
             }
-            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & establishDate;
+            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish; //& establishDate;
         }
 
         private void Clear()

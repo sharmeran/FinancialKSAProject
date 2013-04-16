@@ -67,7 +67,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.EstablishDate, DbType.Date, entity.EstablishDate);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.CompanyID, DbType.Int32, entity.CompanyID);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.IsOutKSA, DbType.Boolean, entity.IsOutKSA);
-                database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.OwnPercentage, DbType.Int32, entity.OwnPercentage);
+                database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.OwnPercentage, DbType.Decimal, entity.OwnPercentage);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.FollowDate, DbType.Date, entity.FollowDate);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.Note, DbType.String, entity.Note);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.NoteEnglish, DbType.String, entity.NoteEnglish);
@@ -113,7 +113,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.EstablishDate, DbType.Date, entity.EstablishDate);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.CompanyID, DbType.Int32, entity.CompanyID);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.IsOutKSA, DbType.Boolean, entity.IsOutKSA);
-                database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.OwnPercentage, DbType.Int32, entity.OwnPercentage);
+                database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.OwnPercentage, DbType.Decimal, entity.OwnPercentage);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.FollowDate, DbType.Date, entity.FollowDate);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.Note, DbType.String, entity.Note);
                 database.AddInParameter(cmd, SubsidiaryCompanyRepositoryConstants.NoteEnglish, DbType.String, entity.NoteEnglish);
@@ -264,7 +264,9 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             subsidiaryCompany.CompanyID = Convert.ToInt32(reader[SubsidiaryCompanyConstants.CompanyID]);
             subsidiaryCompany.Description = reader[SubsidiaryCompanyConstants.Description].ToString();
             subsidiaryCompany.DescriptionEnglish = reader[SubsidiaryCompanyConstants.DescriptionEnglish].ToString();
+            if(reader[SubsidiaryCompanyConstants.EstablishDate]!=DBNull.Value)
             subsidiaryCompany.EstablishDate = Convert.ToDateTime(reader[SubsidiaryCompanyConstants.EstablishDate]);
+            if (reader[SubsidiaryCompanyConstants.FollowDate] != DBNull.Value)
             subsidiaryCompany.FollowDate = Convert.ToDateTime(reader[SubsidiaryCompanyConstants.FollowDate]);
             subsidiaryCompany.ID = Convert.ToInt32(reader[SubsidiaryCompanyConstants.ID]);
             subsidiaryCompany.IsOutKSA = Convert.ToBoolean(reader[SubsidiaryCompanyConstants.IsOutKSA]);
@@ -272,7 +274,8 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             subsidiaryCompany.NameEnglish = reader[SubsidiaryCompanyConstants.NameEnglish].ToString();
             subsidiaryCompany.Note = reader[SubsidiaryCompanyConstants.Note].ToString();
             subsidiaryCompany.NoteEnglish = reader[SubsidiaryCompanyConstants.NoteEnglish].ToString();
-            subsidiaryCompany.OwnPercentage = Convert.ToInt32(reader[SubsidiaryCompanyConstants.OwnPercentage]);
+            if (reader[SubsidiaryCompanyConstants.OwnPercentage] != DBNull.Value)
+            subsidiaryCompany.OwnPercentage = (float)Convert.ToDecimal(reader[SubsidiaryCompanyConstants.OwnPercentage]);
             subsidiaryCompany.Place = reader[SubsidiaryCompanyConstants.Place].ToString();
             subsidiaryCompany.PlaceEnglish = reader[SubsidiaryCompanyConstants.PlaceEnglish].ToString();
             SectorRepository sectorRepository = new SectorRepository();

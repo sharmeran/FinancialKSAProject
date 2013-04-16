@@ -253,6 +253,7 @@ namespace FSP.DataAccess.SQLImlementation.Administration
             user.FullName = reader[UserConstants.FullName].ToString();
             user.Phone = reader[UserConstants.Phone].ToString();
             user.Email = reader[UserConstants.Email].ToString();
+            user.ID = Convert.ToInt32(reader[UserConstants.ID]);
             if (isFull)
             {
                 GroupRepository groupRepository = new GroupRepository();
