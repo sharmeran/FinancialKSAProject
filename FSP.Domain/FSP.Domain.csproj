@@ -62,6 +62,7 @@
     <Compile Include="Domains\Connections\RestrictedConnectionsDomain.cs" />
     <Compile Include="Domains\Connections\UnderStudyingConnectionsDomain.cs" />
     <Compile Include="Domains\Connections\UnRestrictedConnectionsDomain.cs" />
+    <Compile Include="Domains\Financial\CompanyFinancialModelDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomSubCollectionDomain.cs" />
