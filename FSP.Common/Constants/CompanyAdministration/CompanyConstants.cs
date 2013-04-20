@@ -23,5 +23,6 @@ namespace FSP.Common.Constants.CompanyAdministration
         public const string IPO = "IPO";
         public const string GeneralCompany = "GeneralCompany";
         public const string Rank = "Rank";
+        public const string Behavior = "Behavior";
     }
 }

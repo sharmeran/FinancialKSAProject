@@ -25,6 +25,7 @@ namespace FSP.DataAccess.Constants.CompanyAdministration
        public const string IPO = CommonConstants.PreParameter + CompanyConstants.IPO;
        public const string GeneralCompany = CommonConstants.PreParameter + CompanyConstants.GeneralCompany;
        public const string Rank = CommonConstants.PreParameter + CompanyConstants.Rank;
+       public const string Behavior = CommonConstants.PreParameter + CompanyConstants.Behavior;
 
        public const string SP_Insert = "CompaniesInsert";
        public const string SP_Update = "CompaniesUpdate";

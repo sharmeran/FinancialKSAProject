@@ -49,11 +49,11 @@ namespace FSP.Windows.Reports.CompanyAdministration
             txt_CompanyEstablish.Text = date[2] + "/" + date[1] + "/" + date[0];
             txt_CompanyName.Text = company.Name;
             txt_CompanySec.Text = company.Sector.Name;
-            foreach (Behaviour behaviour in company.BehaviourList)
-            {
-                SectorDetailSectionReport sectorDetailSectionReport = new SectorDetailSectionReport(behaviour.Name, behaviour.Description);
-                stk_BehaviourDetails.Children.Add(sectorDetailSectionReport);
-            }
+            //foreach (Behaviour behaviour in company.BehaviourList)
+            //{
+            //    SectorDetailSectionReport sectorDetailSectionReport = new SectorDetailSectionReport(behaviour.Name, behaviour.Description);
+            //    stk_BehaviourDetails.Children.Add(sectorDetailSectionReport);
+            //}
 
             foreach (SisterCompany sister in company.SisterCompanyList)
             {

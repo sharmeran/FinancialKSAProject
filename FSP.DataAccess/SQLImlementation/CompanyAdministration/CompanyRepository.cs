@@ -71,6 +71,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, CompanyRepositoryConstants.DescriptionEnglish, DbType.String, entity.DescriptionEnglish);
                 database.AddInParameter(cmd, CompanyRepositoryConstants.InformationEnglish, DbType.String, entity.InformationEnglish);
                 database.AddInParameter(cmd, CompanyRepositoryConstants.Capital, DbType.Decimal, entity.Capital);
+                database.AddInParameter(cmd, CompanyRepositoryConstants.Behavior, DbType.String, entity.Behavior);
                 if (entity.WithLimitedLiability.Day == date.Day && entity.WithLimitedLiability.Month == date.Month && entity.WithLimitedLiability.Year == date.Year)
                 {
                     database.AddInParameter(cmd, CompanyRepositoryConstants.WithLimitedLiability, DbType.Date, null);
@@ -150,6 +151,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 database.AddInParameter(cmd, CompanyRepositoryConstants.DescriptionEnglish, DbType.String, entity.DescriptionEnglish);
                 database.AddInParameter(cmd, CompanyRepositoryConstants.InformationEnglish, DbType.String, entity.InformationEnglish);
                 database.AddInParameter(cmd, CompanyRepositoryConstants.Capital, DbType.Decimal, entity.Capital);
+                database.AddInParameter(cmd, CompanyRepositoryConstants.Behavior, DbType.String, entity.Behavior);
                 if (entity.WithLimitedLiability.Day == date.Day && entity.WithLimitedLiability.Month == date.Month && entity.WithLimitedLiability.Year == date.Year)
                 {
                     database.AddInParameter(cmd, CompanyRepositoryConstants.WithLimitedLiability, DbType.Date, null);
@@ -205,34 +207,34 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
             }
         }
 
-        public void InsertCompanyBehaviours(Company entity, Common.ActionState actionState)
-        {
+        //public void InsertCompanyBehaviours(Company entity, Common.ActionState actionState)
+        //{
 
 
-            try
-            {
-                BehaviourRepository behaviourRepository = new BehaviourRepository();
+        //    try
+        //    {
+        //        BehaviourRepository behaviourRepository = new BehaviourRepository();
 
-                for (int i = 0; i < entity.BehaviourList.Count; i++)
-                {
-                    behaviourRepository.InsertCompanyBehaviours(entity.ID, entity.BehaviourList[i].ID, actionState);
-                }
+        //        for (int i = 0; i < entity.BehaviourList.Count; i++)
+        //        {
+        //            behaviourRepository.InsertCompanyBehaviours(entity.ID, entity.BehaviourList[i].ID, actionState);
+        //        }
 
 
 
-            }
-            catch (Exception ex)
-            {
-                actionState.SetFail(ActionStatusEnum.CannotInsert, LocalizationConstants.Err_CannotInsert);
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        actionState.SetFail(ActionStatusEnum.CannotInsert, LocalizationConstants.Err_CannotInsert);
+        //    }
 
-        }
+        //}
 
-        public void DeleteCompanyBehaviours(Company entity, Common.ActionState actionState)
-        {
-            BehaviourRepository behaviourRepository = new BehaviourRepository();
-            behaviourRepository.DeleteCompanyBehavioursByCompanyID(entity.ID, actionState);
-        }
+        //public void DeleteCompanyBehaviours(Company entity, Common.ActionState actionState)
+        //{
+        //    BehaviourRepository behaviourRepository = new BehaviourRepository();
+        //    behaviourRepository.DeleteCompanyBehavioursByCompanyID(entity.ID, actionState);
+        //}
 
         public override List<Company> FindAll(Common.ActionState actionState)
         {
@@ -378,12 +380,12 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 if (reader[CompanyConstants.GeneralCompany] != DBNull.Value)
                     company.GeneralCompany = Convert.ToDateTime(reader[CompanyConstants.GeneralCompany]);
                 BehaviourRepository behaviourRepository = new BehaviourRepository();
-                company.BehaviourList = behaviourRepository.FindByCompanyID(company.ID, new Common.ActionState());
+               // company.BehaviourList = behaviourRepository.FindByCompanyID(company.ID, new Common.ActionState());
                 SubsidiaryCompanyRepository subsidiaryCompanyRepository = new SubsidiaryCompanyRepository();
                 company.SubsidiaryCompanyList = subsidiaryCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
                 SisterCompanyRepository sisterCompanyRepository = new SisterCompanyRepository();
                 company.SisterCompanyList = sisterCompanyRepository.FindByCompanyID(company.ID, new Common.ActionState());
-
+                company.Behavior = reader[CompanyConstants.Behavior].ToString();
                 company.Rank = Convert.ToInt32(reader[CompanyConstants.Rank]);
             }
             return company;

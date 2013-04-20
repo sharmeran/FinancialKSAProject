@@ -23,7 +23,7 @@ namespace FSP.Domain.Domains.CompanyAdministration
             DBRepository.Insert(entity, ActionState);
             CompanyRepository companyRepository = new CompanyRepository();
 
-            companyRepository.InsertCompanyBehaviours(entity, ActionState);
+            //companyRepository.InsertCompanyBehaviours(entity, ActionState);
             
            
         }
@@ -43,9 +43,9 @@ namespace FSP.Domain.Domains.CompanyAdministration
         public override void Update(Company entity)
         {
             DBRepository.Update(entity, ActionState);
-            CompanyRepository companyRepository = new CompanyRepository();
-            companyRepository.DeleteCompanyBehaviours(entity, ActionState);
-            companyRepository.InsertCompanyBehaviours(entity, ActionState);
+            //CompanyRepository companyRepository = new CompanyRepository();
+            //companyRepository.DeleteCompanyBehaviours(entity, ActionState);
+            //companyRepository.InsertCompanyBehaviours(entity, ActionState);
         }
 
         public override List<Company> FindAll()
