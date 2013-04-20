@@ -28,7 +28,7 @@ namespace FSP.Windows.Views.Administration
         {
             InitializeComponent();
 
-           
+
         }
         List<User> userList = new List<User>();
         User userEntity = new User();
@@ -156,9 +156,9 @@ namespace FSP.Windows.Views.Administration
             bool isPhoneNumber = false;
             bool isEmail = false;
 
-            if(txt_Username.Text!=string.Empty)
+            if (txt_Username.Text != string.Empty)
             {
-                isUserName=true;
+                isUserName = true;
                 txt_Err_Username.Text = string.Empty;
             }
             else
@@ -238,7 +238,42 @@ namespace FSP.Windows.Views.Administration
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Validation();
+            if (Validation())
+            {
+                userEntity.Email = txt_Email.Text;
+                userEntity.FullName = txt_FullName.Text;
+                userEntity.Group = (Group)cmbo_Group.SelectedItem;
+                userEntity.Password = txt_Password.Password;
+                userEntity.Phone = txt_Phone.Text;
+                userEntity.Username = txt_Username.Text;
+                if (userEntity.ID == 0)
+                {
+                    userDomain.Add(userEntity);
+                    if (userDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
+                    {
+                        MessageBox.Show(userDomain.ActionState.Result, "اضافة مستخدم", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("تمت الاضافة بنجاح", "اضافة مستخدم", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    userDomain.Update(userEntity);
+                    if (userDomain.ActionState.Status != Common.Enums.ActionStatusEnum.NoError)
+                    {
+                        MessageBox.Show(userDomain.ActionState.Result, "تعديل مستخدم", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("تم التعديل بنجاح", "تعديل مستخدم", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                Clear();
+            }
+
+
         }
 
 

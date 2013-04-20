@@ -8,11 +8,12 @@
     <Grid>
 
         <telerik:RadTabControl telerik:StyleManager.Theme="Expression_Dark" >
-            <telerik:RadTabItem  Name="tab_Administration" Header="ادارة النظام" Visibility="Collapsed">
-                <Administration:MainAdministrationView x:Name="view_MainAdministration"/>
-            </telerik:RadTabItem>
-            <telerik:RadTabItem  Name="tab_Company" Header="ادارة الشركات" Visibility="Collapsed">
+
+            <telerik:RadTabItem  Name="tab_Company" Header="ادارة الشركات" >
                 <Companies:MainCompanyAdministration x:Name="view_MainCompanyAdministration"  />
+            </telerik:RadTabItem>
+            <telerik:RadTabItem  Name="tab_Administration" Header="ادارة النظام" >
+                <Administration:MainAdministrationView x:Name="view_MainAdministration"/>
             </telerik:RadTabItem>
         </telerik:RadTabControl>
 

@@ -7,6 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="300" FlowDirection="RightToLeft" Loaded="UserControl_Loaded">
     <Grid>
         <telerik:RadTabControl telerik:StyleManager.Theme="Expression_Dark">
+            <telerik:RadTabItem Name="tab_Company" Header="الشركات" Visibility="Collapsed">
+                <Companies:CompanyView x:Name="view_Company"/>
+            </telerik:RadTabItem>
             <telerik:RadTabItem Name="tab_Behaviour" Header="نشاطات الشركات" Visibility="Collapsed">
                 <Companies:BehaviorView x:Name="view_BehaviorView" />
             </telerik:RadTabItem>
@@ -16,9 +19,7 @@
             <telerik:RadTabItem Name="tab_Sector" Header="القطاعات" Visibility="Collapsed">
                 <Companies:SectorView x:Name="view_Sector"/>
             </telerik:RadTabItem>
-            <telerik:RadTabItem Name="tab_Company" Header="الشركات" Visibility="Collapsed">
-                <Companies:CompanyView x:Name="view_Company"/>
-            </telerik:RadTabItem>
+           
             <telerik:RadTabItem Name="tab_Report" Header="التقارير" >
                <CompanyAdministration:CompanyReport />
             </telerik:RadTabItem>

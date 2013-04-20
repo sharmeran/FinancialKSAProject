@@ -89,6 +89,7 @@ namespace FSP.Windows.Views.Companies
             //    cmbo_Behaviours.ItemsSource=chkList;
             //}
             txt_Name.Focus();
+            cmbo_Sector.SelectedIndex = 0;
         }
 
         private void btn_Save_Click_1(object sender, RoutedEventArgs e)

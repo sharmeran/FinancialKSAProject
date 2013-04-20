@@ -6,140 +6,141 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
               Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded_1">
-    
 
+    <ScrollViewer telerik:StyleManager.Theme="Expression_Dark">
         <Grid>
-        <StackPanel Orientation="Vertical" Margin="10,20,0,0" >
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0" >
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="اسم الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Name"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Name"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="اسم الشركة بالانجليزي"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_NameEnglish"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_NameEnglish"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="الوصف"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Description"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Description"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="الوصف بالانجليزي"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_DescriptionEnglish"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_DescriptionEnglish"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="القطاغ"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadComboBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Sector" DisplayMemberPath="Name" SelectedIndex="0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="النشاطات"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <!--<telerik:RadComboBox    telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Behaviours" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="اسم الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Name"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Name"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="اسم الشركة بالانجليزي"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_NameEnglish"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_NameEnglish"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="الوصف"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Description"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Description"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="الوصف بالانجليزي"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_DescriptionEnglish"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_DescriptionEnglish"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="القطاغ"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadComboBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Sector" DisplayMemberPath="Name" SelectedIndex="0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="النشاطات"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <!--<telerik:RadComboBox    telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Behaviours" >
                     
                 </telerik:RadComboBox>-->
 
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Height="100" TextWrapping="Wrap"  Name="txt_Behavior"  VerticalScrollBarVisibility="Auto"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Behavior"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Height="100" TextWrapping="Wrap"  Name="txt_Behavior"  VerticalScrollBarVisibility="Auto"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Behavior"/>
 
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="معلومات عامة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Information"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Information"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="معلومات عامة بالانجليزية"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_InformationEnglish"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_InformationEnglish"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="رأس مال الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight"   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Capital" Culture="ar-SA" TextMode="PlainText"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Capital"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="رمز الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Rank"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Rank"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="تأسيس الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_EstablishGer" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
-                <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_EstablishHij" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
-                <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Establish"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="ذ.م.م"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_WithLimitedLiability_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
-                <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_WithLimitedLiability_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
-                <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_WithLimitedLiability"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="شركة مساهمة مقفلة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_ClosedJointStockCompany_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
-                <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_ClosedJointStockCompany_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
-                <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_ClosedJointStockCompany"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="شركة اكتتاب"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_IPO_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
-                <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_IPO_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
-                <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_IPO"/>
-            </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="معلومات عامة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Information"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Information"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="معلومات عامة بالانجليزية"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_InformationEnglish"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_InformationEnglish"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="رأس مال الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight"   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Capital" Culture="ar-SA" TextMode="PlainText"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Capital"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="رمز الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="txt_Rank"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Rank"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="تأسيس الشركة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_EstablishGer" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
+                    <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_EstablishHij" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
+                    <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Establish"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="ذ.م.م"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_WithLimitedLiability_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
+                    <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_WithLimitedLiability_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
+                    <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_WithLimitedLiability"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="شركة مساهمة مقفلة"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_ClosedJointStockCompany_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
+                    <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_ClosedJointStockCompany_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
+                    <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_ClosedJointStockCompany"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="شركة اكتتاب"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_IPO_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
+                    <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_IPO_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
+                    <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_IPO"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="تاريخ عام"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_GeneralCompany_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
-                <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_GeneralCompany_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
-                <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
-                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_GeneralCompany"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="تاريخ عام"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_GeneralCompany_Ger" LostFocus="dtpkr_EstablishGer_LostFocus_1"/>
+                    <TextBlock Text="ميلادي"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <telerik:RadWatermarkTextBox WatermarkContent="dd/mm/yyyy" telerik:StyleManager.Theme="Expression_Dark" Width="100" Margin="10,0,0,0" Name="dtpkr_GeneralCompany_Hijri" LostFocus="dtpkr_EstablishHij_LostFocus_1"/>
+                    <TextBlock Text="هجري"  Foreground="White" Width="50" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Margin="5,0,0,0"/>
+                    <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_GeneralCompany"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="130,10,0,0">
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Name="btn_Save" Click="btn_Save_Click_1">
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="حفظ" />
+                    </telerik:RadButton>
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Clear"  Click="btn_Clear_Click_1">
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="مسح"/>
+                    </telerik:RadButton>
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Delete"  Click="btn_Delete_Click_1">
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="حذف"/>
+                    </telerik:RadButton>
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Refresh" Click="btn_Refresh_Click"  >
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="تحديث"/>
+                    </telerik:RadButton>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Name="stk_SubCompanies" Visibility="Collapsed" Margin="130,10,0,0">
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Name="btn_SisterCompany" Click="btn_SisterCompany_Click_1">
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="الشركات الشقيقة" />
+                    </telerik:RadButton>
+                    <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_SubsidiaryCompany"  Click="btn_SubsidiaryCompany_Click_1">
+                        <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="الشركات التابعة"/>
+                    </telerik:RadButton>
+                </StackPanel>
+                <StackPanel Margin="0,10,0,0">
+                    <telerik:RadGridView Height="250" Name="grd_Company" MouseDoubleClick="grd_Sector_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" />
+                            <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>
+                            <telerik:GridViewDataColumn Header="القطاع" DataMemberBinding="{Binding Sector.Name}" Width="120"/>
+                            <telerik:GridViewDataColumn Header="عدد الشركات الشقيقة" DataMemberBinding="{Binding SisterCompanyList.Count}" Width="120"/>
+                            <telerik:GridViewDataColumn Header="عدد الشركات التابعة" DataMemberBinding="{Binding SubsidiaryCompanyList.Count}" Width="120"/>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="130,10,0,0">
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Name="btn_Save" Click="btn_Save_Click_1">
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="حفظ" />
-                </telerik:RadButton>
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Clear"  Click="btn_Clear_Click_1">
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="مسح"/>
-                </telerik:RadButton>
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Delete"  Click="btn_Delete_Click_1">
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="حذف"/>
-                </telerik:RadButton>
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_Refresh" Click="btn_Refresh_Click"  >
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="تحديث"/>
-                </telerik:RadButton>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Name="stk_SubCompanies" Visibility="Collapsed" Margin="130,10,0,0">
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Name="btn_SisterCompany" Click="btn_SisterCompany_Click_1">
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="الشركات الشقيقة" />
-                </telerik:RadButton>
-                <telerik:RadButton  Width="100" Height="25" telerik:StyleManager.Theme="Expression_Dark" Margin="5,0,0,0" Name="btn_SubsidiaryCompany"  Click="btn_SubsidiaryCompany_Click_1">
-                    <TextBlock Foreground="White" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Text="الشركات التابعة"/>
-                </telerik:RadButton>
-            </StackPanel>
-            <StackPanel Margin="0,10,0,0">
-                                <telerik:RadGridView Height="250" Name="grd_Company" MouseDoubleClick="grd_Sector_MouseDoubleClick_1" AutoGenerateColumns="False" IsReadOnly="True" telerik:StyleManager.Theme="Expression_Dark"  IsFilteringAllowed="False" >
-                    <telerik:RadGridView.Columns>
-                        <telerik:GridViewDataColumn Header="الاسم" DataMemberBinding="{Binding Name}" />
-                        <telerik:GridViewDataColumn Header="الوصف" DataMemberBinding="{Binding Description}" Width="120"/>
-                        <telerik:GridViewDataColumn Header="القطاع" DataMemberBinding="{Binding Sector.Name}" Width="120"/>
-                        <telerik:GridViewDataColumn Header="عدد الشركات الشقيقة" DataMemberBinding="{Binding SisterCompanyList.Count}" Width="120"/>
-                        <telerik:GridViewDataColumn Header="عدد الشركات التابعة" DataMemberBinding="{Binding SubsidiaryCompanyList.Count}" Width="120"/>
-                    </telerik:RadGridView.Columns>
-                </telerik:RadGridView>
-              
-            </StackPanel>
-        </StackPanel>
-    </Grid>  
+        </Grid>
+    </ScrollViewer>
 </UserControl>

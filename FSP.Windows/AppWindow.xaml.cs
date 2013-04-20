@@ -38,14 +38,14 @@ namespace FSP.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainAdministrationView))
+            if (!UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainAdministrationView))
             {
-                tab_Administration.Visibility = System.Windows.Visibility.Visible;
+                tab_Administration.Visibility = System.Windows.Visibility.Collapsed;
             }
 
-            if (UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainAdministrationView))
+            if (!UISecurity.IsHasAccessList(UISecurity.UserEntity.Group.AccessList, UIAccessListConstants.MainCompanyView))
             {
-                tab_Company.Visibility = System.Windows.Visibility.Visible;
+                tab_Company.Visibility = System.Windows.Visibility.Collapsed;
             }
 
             //tab_Administration.Content = new MainAdministrationView();
