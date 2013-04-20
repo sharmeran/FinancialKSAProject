@@ -23,11 +23,17 @@ namespace FSP.Common.Entites.CompanyAdministration
         DateTime closedJointStockCompany;
         DateTime iPO;
         DateTime generalCompany;
-        List<Behaviour> behaviourList;
+        //List<Behaviour> behaviourList;
         List<SubsidiaryCompany> subsidiaryCompanyList;
         List<SisterCompany> sisterCompanyList;
         int rank;
+        string behavior;
 
+        public string Behavior
+        {
+            get { return behavior; }
+            set { behavior = value; }
+        }
         public int Rank
         {
             get { return rank; }
@@ -46,11 +52,11 @@ namespace FSP.Common.Entites.CompanyAdministration
             set { subsidiaryCompanyList = value; }
         }
 
-        public List<Behaviour> BehaviourList
-        {
-            get { return behaviourList; }
-            set { behaviourList = value; }
-        }
+        //public List<Behaviour> BehaviourList
+        //{
+        //    get { return behaviourList; }
+        //    set { behaviourList = value; }
+        //}
 
 
         public DateTime GeneralCompany

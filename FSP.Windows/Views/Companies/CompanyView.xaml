@@ -37,9 +37,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="النشاطات"  Foreground="White" Width="120" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                <telerik:RadComboBox    telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Behaviours" >
+                <!--<telerik:RadComboBox    telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Name="cmbo_Behaviours" >
                     
-                </telerik:RadComboBox>
+                </telerik:RadComboBox>-->
+
+                <telerik:RadWatermarkTextBox   telerik:StyleManager.Theme="Expression_Dark" Width="300" Margin="10,0,0,0" Height="100" TextWrapping="Wrap"  Name="txt_Behavior"  VerticalScrollBarVisibility="Auto"/>
+                <TextBlock Text=""  Foreground="Red"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen" Name="txt_Err_Behavior"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">

@@ -73,21 +73,21 @@ namespace FSP.Windows.Views.Companies
                 cmbo_Sector.ItemsSource = sectorList;
             }
 
-            BehaviourDomain behaviourDomain = new BehaviourDomain(1, Common.Enums.LanguagesEnum.Arabic);
-            List<Behaviour> behaviorList = new List<Behaviour>();
-            List<CheckBox> chkList = new List<CheckBox>();
-            behaviorList = behaviourDomain.FindAll();
-            if (behaviourDomain.ActionState.Status == Common.Enums.ActionStatusEnum.NoError)
-            {
-                for (int i = 0; i < behaviorList.Count; i++)
-                {
-                    CheckBox chkBox = new CheckBox();
-                    chkBox.DataContext = behaviorList[i];
-                    chkBox.Content = behaviorList[i].Name;
-                    chkList.Add(chkBox);
-                }
-                cmbo_Behaviours.ItemsSource=chkList;
-            }
+            //BehaviourDomain behaviourDomain = new BehaviourDomain(1, Common.Enums.LanguagesEnum.Arabic);
+            //List<Behaviour> behaviorList = new List<Behaviour>();
+            //List<CheckBox> chkList = new List<CheckBox>();
+            //behaviorList = behaviourDomain.FindAll();
+            //if (behaviourDomain.ActionState.Status == Common.Enums.ActionStatusEnum.NoError)
+            //{
+            //    for (int i = 0; i < behaviorList.Count; i++)
+            //    {
+            //        CheckBox chkBox = new CheckBox();
+            //        chkBox.DataContext = behaviorList[i];
+            //        chkBox.Content = behaviorList[i].Name;
+            //        chkList.Add(chkBox);
+            //    }
+            //    cmbo_Behaviours.ItemsSource=chkList;
+            //}
             txt_Name.Focus();
         }
 
@@ -156,17 +156,17 @@ namespace FSP.Windows.Views.Companies
                          company.WithLimitedLiability = Convert.ToDateTime(dtpkr_WithLimitedLiability_Ger.Text, format);
                      }
                  }
-                List<Behaviour> behaviours = new List<Behaviour>();
-                for (int i = 0; i < cmbo_Behaviours.Items.Count; i++)
-                {
-                    CheckBox checkBox =(CheckBox)cmbo_Behaviours.Items[i];
-                    if ((bool)checkBox.IsChecked)
-                    {
-                        behaviours.Add((Behaviour)checkBox.DataContext);
-                    }
-                }
-                company.BehaviourList = behaviours;
-
+                //List<Behaviour> behaviours = new List<Behaviour>();
+                //for (int i = 0; i < cmbo_Behaviours.Items.Count; i++)
+                //{
+                //    CheckBox checkBox =(CheckBox)cmbo_Behaviours.Items[i];
+                //    if ((bool)checkBox.IsChecked)
+                //    {
+                //        behaviours.Add((Behaviour)checkBox.DataContext);
+                //    }
+                //}
+                //company.BehaviourList = behaviours;
+                company.Behavior = txt_Behavior.Text;
                 if (company.ID == 0)
                 {
                     companyDomain.Add(company);
@@ -262,6 +262,7 @@ namespace FSP.Windows.Views.Companies
                 txt_Name.Text = company.Name;
                 txt_NameEnglish.Text = company.NameEnglish;
                 txt_Rank.Text = company.Rank.ToString();
+                txt_Behavior.Text = company.Behavior;
                 for (int i = 0; i < cmbo_Sector.Items.Count; i++)
                 {
                     if (company.Sector.ID == ((Sector)cmbo_Sector.Items[i]).ID)
@@ -302,22 +303,23 @@ namespace FSP.Windows.Views.Companies
                 }
 
                 stk_SubCompanies.Visibility = System.Windows.Visibility.Visible;
-                for (int i = 0; i < company.BehaviourList.Count; i++)
-                {
-                    for (int j = 0; j < cmbo_Behaviours.Items.Count; j++)
-                    {
-                        if (((Behaviour)((CheckBox)cmbo_Behaviours.Items[j]).DataContext).ID == company.BehaviourList[i].ID)
-                        {
-                            ((CheckBox)cmbo_Behaviours.Items[j]).IsChecked = true;
-                        }
-                    }
-                }
+                //for (int i = 0; i < company.BehaviourList.Count; i++)
+                //{
+                //    for (int j = 0; j < cmbo_Behaviours.Items.Count; j++)
+                //    {
+                //        if (((Behaviour)((CheckBox)cmbo_Behaviours.Items[j]).DataContext).ID == company.BehaviourList[i].ID)
+                //        {
+                //            ((CheckBox)cmbo_Behaviours.Items[j]).IsChecked = true;
+                //        }
+                //    }
+                //}
             }
         }
 
         private void Clear()
         {
             txt_Capital.Text = string.Empty;
+            txt_Behavior.Text = string.Empty;
             txt_Description.Text = string.Empty;
             txt_DescriptionEnglish.Text = string.Empty;
             txt_Err_Capital.Text = string.Empty;
@@ -336,6 +338,7 @@ namespace FSP.Windows.Views.Companies
             txt_InformationEnglish.Text = string.Empty;
             txt_Name.Text = string.Empty;
             txt_NameEnglish.Text = string.Empty;
+            txt_Err_Behavior.Text = string.Empty;
 
             dtpkr_ClosedJointStockCompany_Ger.Text = string.Empty;
             dtpkr_ClosedJointStockCompany_Hijri.Text = string.Empty;
@@ -353,10 +356,10 @@ namespace FSP.Windows.Views.Companies
             cmbo_Sector.SelectedIndex = 0;
             //grd_Company.ItemsSource = companyDomain.FindAll();
             stk_SubCompanies.Visibility = System.Windows.Visibility.Collapsed;
-            for (int i = 0; i < cmbo_Behaviours.Items.Count; i++)
-            {
-                ((CheckBox)cmbo_Behaviours.Items[i]).IsChecked = false;
-            }
+            //for (int i = 0; i < cmbo_Behaviours.Items.Count; i++)
+            //{
+            //    ((CheckBox)cmbo_Behaviours.Items[i]).IsChecked = false;
+            //}
         }
 
         private void dtpkr_EstablishGer_LostFocus_1(object sender, RoutedEventArgs e)
@@ -410,6 +413,18 @@ namespace FSP.Windows.Views.Companies
             bool informationEnglish = false;
             bool capital = false;
             bool rank = false;
+            bool behavior = false;
+
+            if (string.IsNullOrEmpty(txt_Behavior.Text) == false)
+            {
+                behavior = true;
+                txt_Err_Behavior.Text = string.Empty;
+            }
+            else
+            {
+                behavior = false;
+                txt_Err_Behavior.Text = "يجب ملئ النشاطات";
+            }
 
             if (string.IsNullOrEmpty(txt_Name.Text) == false)
             {
@@ -439,7 +454,7 @@ namespace FSP.Windows.Views.Companies
             else
             {
                 descriptionEnglish = false;
-                txt_Err_DescriptionEnglish.Text = "يجب ملئ الوصف بالنجليزي";
+                txt_Err_DescriptionEnglish.Text = "يجب ملئ الوصف بالانجليزية";
             }
             if (string.IsNullOrEmpty(dtpkr_EstablishGer.Text) == false)
             {
@@ -492,7 +507,7 @@ namespace FSP.Windows.Views.Companies
             else
             {
                 capital = false;
-                txt_Err_Rank.Text = "يجب ملئ رأس ترتيب الشركة";
+                txt_Err_Rank.Text = "يجب ملئ  رمز الشركة";
             }
 
             if (string.IsNullOrEmpty(txt_Information.Text) == false)
@@ -527,7 +542,7 @@ namespace FSP.Windows.Views.Companies
                 txt_Err_NameEnglish.Text = "يجب ملئ الاسم بالانجليزية";
                 nameEnglish = false;
             }
-            return nameEnglish & name & description & descriptionEnglish & information & informationEnglish & capital & establishDate & rank;
+            return behavior & nameEnglish & name & description & descriptionEnglish & information & informationEnglish & capital & establishDate & rank;
         }
 
         private string HijriToGer(string date)
