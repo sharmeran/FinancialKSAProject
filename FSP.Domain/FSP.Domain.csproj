@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Excel">
+      <HintPath>..\..\..\Downloads\Compressed\2.1.beta.binary\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\Downloads\Compressed\2.1.beta.binary\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -63,6 +69,7 @@
     <Compile Include="Domains\Connections\UnderStudyingConnectionsDomain.cs" />
     <Compile Include="Domains\Connections\UnRestrictedConnectionsDomain.cs" />
     <Compile Include="Domains\Financial\CompanyFinancialModelDomain.cs" />
+    <Compile Include="Domains\Financial\MainFinancialDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomCollectionDomain.cs" />
     <Compile Include="Domains\Zakat\ZakatCustomSubCollectionDomain.cs" />

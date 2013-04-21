@@ -12,7 +12,7 @@ using FSP.Common.Entites.Financial.CashFlow;
 
 namespace FSP.Common.Entites.Financial
 {
-    public class CompanyFinancialModel:BaseClass
+    public class CompanyFinancialModel : BaseClass
     {
         int iD;
         int companyID;
@@ -24,13 +24,14 @@ namespace FSP.Common.Entites.Financial
         bool isReviewed;
         List<IncomeStatment> incomeList;
         List<CashFlowStatement> cashFlowList;
+        List<Asset> assetsList;
 
         public List<CashFlowStatement> CashFlowList
         {
             get { return cashFlowList; }
             set { cashFlowList = value; }
         }
-        List<Asset> assetsList;
+
 
         public List<Asset> AssetsList
         {

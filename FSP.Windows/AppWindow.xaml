@@ -4,6 +4,7 @@
         xmlns:Administration="clr-namespace:FSP.Windows.Views.Administration"
         xmlns:Views="clr-namespace:FSP.Windows.Views" x:Class="FSP.Windows.AppWindow"
         xmlns:Companies="clr-namespace:FSP.Windows.Views.Companies"
+        xmlns:Financials="clr-namespace:FSP.Windows.Views.Financial"
         Title="AppWindow" FlowDirection="RightToLeft"  Background="Black" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
 
@@ -14,6 +15,9 @@
             </telerik:RadTabItem>
             <telerik:RadTabItem  Name="tab_Administration" Header="ادارة النظام" >
                 <Administration:MainAdministrationView x:Name="view_MainAdministration"/>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem   Header="النظام المالي" >
+                <Financials:MainFinancialMenuView />
             </telerik:RadTabItem>
         </telerik:RadTabControl>
 

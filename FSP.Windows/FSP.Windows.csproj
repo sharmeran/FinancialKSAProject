@@ -197,6 +197,12 @@
     <Compile Include="Views\Companies\SubsidiaryCompanyView.xaml.cs">
       <DependentUpon>SubsidiaryCompanyView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Financial\MainFinancialMenuView.xaml.cs">
+      <DependentUpon>MainFinancialMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Financial\MainFinancialView.xaml.cs">
+      <DependentUpon>MainFinancialView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -280,6 +286,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Companies\SubsidiaryCompanyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Financial\MainFinancialMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Financial\MainFinancialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
