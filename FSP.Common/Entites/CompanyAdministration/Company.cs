@@ -18,7 +18,7 @@ namespace FSP.Common.Entites.CompanyAdministration
         string nameEnglish;
         string descriptionEnglish;
         string informationEnglish;
-        float capital;
+        decimal capital;
         DateTime withLimitedLiability;
         DateTime closedJointStockCompany;
         DateTime iPO;
@@ -83,7 +83,7 @@ namespace FSP.Common.Entites.CompanyAdministration
             set { withLimitedLiability = value; }
         }
 
-        public float Capital
+        public decimal Capital
         {
             get { return capital; }
             set { capital = value; }

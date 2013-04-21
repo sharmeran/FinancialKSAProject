@@ -370,7 +370,7 @@ namespace FSP.DataAccess.SQLImlementation.CompanyAdministration
                 company.NameEnglish = reader[CompanyConstants.NameEnglish].ToString();
                 company.DescriptionEnglish = reader[CompanyConstants.DescriptionEnglish].ToString();
                 company.InformationEnglish = reader[CompanyConstants.InformationEnglish].ToString();
-                company.Capital = (float)Convert.ToDouble(reader[CompanyConstants.Capital]);
+                company.Capital = Convert.ToDecimal(reader[CompanyConstants.Capital]);
                 if (reader[CompanyConstants.WithLimitedLiability] != DBNull.Value)
                     company.WithLimitedLiability = Convert.ToDateTime(reader[CompanyConstants.WithLimitedLiability]);
                 if (reader[CompanyConstants.ClosedJointStockCompany] != DBNull.Value)

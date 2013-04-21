@@ -96,7 +96,7 @@ namespace FSP.Windows.Views.Companies
         {
             if (Validation())
             {
-                company.Capital =(float) Convert.ToDouble(txt_Capital.Value);
+                company.Capital = Convert.ToDecimal(txt_Capital.Value);
                 if (!string.IsNullOrEmpty(dtpkr_ClosedJointStockCompany_Ger.Text))
                 {
                     if (Helper.CheckDateGer(dtpkr_ClosedJointStockCompany_Ger.Text))
@@ -469,9 +469,9 @@ namespace FSP.Windows.Views.Companies
             }
             if (string.IsNullOrEmpty(txt_Capital.Text) == false)
             {
-                float cap;
+                decimal cap;
 
-                if (float.TryParse(txt_Capital.Value.ToString(), out cap))
+                if (decimal.TryParse(txt_Capital.Value.ToString(), out cap))
                 {
                     txt_Err_Capital.Text = string.Empty;
                     capital = true;
