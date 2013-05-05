@@ -5,312 +5,519 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Background="Black" FlowDirection="RightToLeft" Loaded="UserControl_Loaded" >
-    
-        <ScrollViewer  telerik:StyleManager.Theme="Expression_Dark">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="الشركة" Margin="10,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                    <telerik:RadComboBox Name="cmbo_Company" Width="200" Height="25" DisplayMemberPath="Name" telerik:StyleManager.Theme="Expression_Dark"/>
-                    <TextBlock Text="السنة" Margin="50,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                    <telerik:RadComboBox Name="cmbo_Year" Width="200" Height="25"  telerik:StyleManager.Theme="Expression_Dark"/>
-                    <TextBlock Text="اسم الملف" Margin="50,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                    <telerik:RadWatermarkTextBox Name="txt_FileName" Width="300" Height="25" telerik:StyleManager.Theme="Expression_Dark"/>
-                    <telerik:RadButton Content="بحث" Width="70" Height="25" telerik:StyleManager.Theme="Expression_Dark" Click="RadButton_Click"/>
-                </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
+    <ScrollViewer  telerik:StyleManager.Theme="Expression_Dark">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="الشركة" Margin="10,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <telerik:RadComboBox Name="cmbo_Company" Width="200" Height="25" DisplayMemberPath="Name" telerik:StyleManager.Theme="Expression_Dark"/>
+                <TextBlock Text="السنة" Margin="50,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <telerik:RadComboBox Name="cmbo_Year" Width="200" Height="25"  telerik:StyleManager.Theme="Expression_Dark"/>
+                <TextBlock Text="اسم الملف" Margin="50,0,10,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                <telerik:RadWatermarkTextBox Name="txt_FileName" Width="300" Height="25" telerik:StyleManager.Theme="Expression_Dark"/>
+                <telerik:RadButton Content="بحث" Width="70" Height="25" telerik:StyleManager.Theme="Expression_Dark" Click="RadButton_Click"/>
+            </StackPanel>
 
-                    <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
-                        <telerik:RadExpander.Header>
-                            <TextBlock Text="قائمة الدخل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                        </telerik:RadExpander.Header>
-                        <StackPanel >
+            <StackPanel Orientation="Horizontal">
+
+                <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                    <telerik:RadExpander.Header>
+                        <TextBlock Text="قائمة الدخل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </telerik:RadExpander.Header>
+                    <StackPanel >
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة الايرادات" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الايرادات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_Revenues"   telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_Revenues_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="تكلفة الايرادات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CostOfRevenue"   telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_CostOfRevenue_ValueChanged"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة الربح الاجمالي" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الربح الاجمالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_GrossProfit"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_GrossProfit_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="المصاريف العامة البيع و الادارية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_SellingGeneral"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_SellingGeneral_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="دخل التشغيل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_OperatingIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة دخل التشغيل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="اجمالي الدخل المالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_TotalFinancialIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الفوائد المدفوعة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestExpense_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الفوائد المدفوعة الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestExpenseNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestExpenseNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الفوائد المكتسبة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestIncome_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الفوائد المكتسبة الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestIncomeNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="دخل الاستثمارات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InvestmentIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InvestmentIncome_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="دخل الاستثمارات الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InvestmentIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InvestmentIncomeNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل من شركة شقيقة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeFromSisterCompany"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncomeFromSisterCompany_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل من شركة شقيقة غير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeFromSisterCompanyNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncomeFromSisterCompanyNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الايرادات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherIncome_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="المصروفات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherExpense_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الايرادات الاخرى الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherIncomeNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="المصروفات الاخرى الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherExpenseNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherExpenseNonIslamic_ValueChanged"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة الدخل قبل بنود XO" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل قبل بنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_IncomeBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncomeBeforeXOItems_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="صافي الربح قبل الضرائب والزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetProfitBeforeTax"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_NetProfitBeforeTax_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="ضريبة الدخل - الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeTax"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncomeTax_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="مخصصات الضرائب - الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TaxProvision"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_TaxProvision_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="معدل الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadWatermarkTextBox FlowDirection="LeftToRight" Name="txt_ZakatRate"  telerik:StyleManager.Theme="Expression_Dark" Width="120"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="صافي خسارة غير عادية من الضرائب" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ExtraordinaryLossNetOfTax"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_ExtraordinaryLossNetOfTax_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="صافي الربح قبل حقوق الأقلية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_NetProfitBeforeMinorityInterest"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_NetProfitBeforeMinorityInterest_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="حقوق الأقلية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_MinorityInterests"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_MinorityInterests_ValueChanged"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="صافي الدخل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_NetIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة المتفرقات" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="اجمالي ارباح نقدية للأسهم الممتازة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashPreferredDividends"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="اجمالي ارباح نقدية للأسهم الممتازة غير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashPreferredDividendsNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="التعديلات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherAdjustment"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="صافي الدخل المتاح للمساهمين العاديين" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetIncAvailtoCommonShareholders"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="خسارة غير عادية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_AbnormalLoss"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="تأثير الضريبة على الخسارة غير العادية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TaxEffectOnAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل المطبع" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NormalizedIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل الشامل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ComprehensiveIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الدخل الشامل للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ComprehensiveIncomePerShare"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم قبل البنود غير الطبيعية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم قبل البنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPS"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="عائد متوسط السهم المرجح" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicWeightedAvgShares"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض قبل البنود غير الطبيعية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPSBeforeAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض قبل البنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPSBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPS"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="متوسط المرجح للأسهم المخفضة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedWeightedAvgShares"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                        <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                            <telerik:RadExpander.Header>
+                                <TextBlock Text="قائمة مرجع العناصر" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                            </telerik:RadExpander.Header>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="EBITDA" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_EBITDA"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="هامش إجمالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_GrossMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="تعمل الهامش" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OperatingMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="هامش الربح" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ProfitMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="المبيعات الفعلية لكل موظف" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ActualSalesPerEmployee"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="الأرباح الموزعة للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DividendsPerShare"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="مجموع ارباح نقدية المشترك" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashCommonDividends"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="نمو المبيعات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_SalesGrowth"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="عائد السهم الواحد الأساسية قبل النمو XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeXOGrowth"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="إيرادات الفوائد" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_RefInterestIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="رسملة مصروفات الفوائد" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CapitalizedInterestExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="نفقات البحث والتطوير" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ResearchDevelopmentExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="انخفاض المصروفات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DepreciationExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="White" Width="250" Text="   سجل المؤشر الجزئي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_PartialRecordIndicator"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </telerik:RadExpander>
+                    </StackPanel>
+                </telerik:RadExpander>
+                <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                    <telerik:RadExpander.Header>
+                        <TextBlock Text="قائمة الدخل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </telerik:RadExpander.Header>
+                </telerik:RadExpander>
+                <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                    <telerik:RadExpander.Header>
+                        <TextBlock Text="قائمة التدفق النقدي" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                    </telerik:RadExpander.Header>
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal">
                             <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
                                 <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة الايرادات" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <TextBlock Text="التدفقات النقدية من العمليات التشغيلية" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                                 </telerik:RadExpander.Header>
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الايرادات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_Revenues"   telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="تكلفة الايرادات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CostOfRevenue"   telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                <StackPanel >
+                                    <StackPanel >
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="التدفقات النقدية من العمليات التشغيلية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_CashFlowsFromOperatingActivities"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="صافي الدخل قبل الضرائب وحقوق الأقلية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetIncomeBeforeTaxMinorityInterest"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_NetIncomeBeforeTaxMinorityInterest_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="الاستهلاك والإطفاء" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DepreciationAmortization"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_DepreciationAmortization_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="الفائدة المدفوعة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestedPaid"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestedPaid_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="الفائدة المحصلة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestReceived"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_InterestReceived_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="الضرائب والزكاة المدفوعة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TaxAndZakatPaid"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_TaxAndZakatPaid_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="الحركة على رأس المال العامل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_MovementonWoekingCapital"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_MovementonWoekingCapital_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="التغيير في عمليات التشغيل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ChangeInOperatingActivities"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_ChangeInOperatingActivities_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="التغيير في الأحكام" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ChangeInProvisions"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_ChangeInProvisions_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="اخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OthersCashFlow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OthersCashFlow_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="التعديلات الاخرى غير النقدية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherNonCashAdjustments"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherNonCashAdjustments_ValueChanged"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Foreground="White" Width="250" Text="التغيرات في رأس المال غير النقدية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                            <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ChangesInNonCashCapital"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_ChangesInNonCashCapital_ValueChanged"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
                             </telerik:RadExpander>
+                        </StackPanel>
+                        <StackPanel>
                             <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
                                 <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة الربح الاجمالي" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <TextBlock Text="التدفقات النقدية من الأنشطة الاستثمارية" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                                 </telerik:RadExpander.Header>
-                                <StackPanel>
+                                <StackPanel >
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الربح الاجمالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_GrossProfit"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفقات النقدية من الأنشطة الاستثمارية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_CashFlowsFromInvestingActivities"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="المصاريف العامة البيع و الادارية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_SellingGeneral"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التخلص من الاصول الثابتة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DisposalOfFixedAssets"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_DisposalOfFixedAssets_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="دخل التشغيل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OperatingIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="النفقات الرأسمالية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CapitalExpenditures"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_CapitalExpenditures_ValueChanged"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="White" Width="250" Text="(الزيادة) النقص في العقارات والاراضي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncDecInpropertyPlant"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncDecInpropertyPlant_ValueChanged"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="White" Width="250" Text="الزيادة في الاستثمارات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncreaseInInvestments"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncreaseInInvestments_ValueChanged"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="White" Width="250" Text="النقص في الاستثمارات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DecreaseInInvestments"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_DecreaseInInvestments_ValueChanged"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="White" Width="250" Text="التدفقات النقدية الداخلة (الخارجة) الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherCashInflowOutflow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherCashInflowOutflow_ValueChanged"/>
                                     </StackPanel>
                                 </StackPanel>
                             </telerik:RadExpander>
+                        </StackPanel>
+                        <StackPanel>
                             <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
                                 <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة دخل التشغيل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <TextBlock Text="النقدية من أنشطة التمويل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                                 </telerik:RadExpander.Header>
-                                <StackPanel>
+                                <StackPanel >
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="اجمالي الدخل المالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalFinancialIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="النقدية من أنشطة التمويل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_CashFromFinancingActivities"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الفوائد المدفوعة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="أرباح الأسهم المدفوعة خلال السنة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DividendsPaidDuringTheYear"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_DividendsPaidDuringTheYear_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الفوائد المدفوعة الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestExpenseNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="الإصدارات (المشتريات) لأسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IssuancesPurchasesOfEquityShares"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IssuancesPurchasesOfEquityShares_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الفوائد المكتسبة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="تغيير في الاقتراض قصير الأجل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ChangeInShortTermBorrowings"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_ChangeInShortTermBorrowings_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الفوائد المكتسبة الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InterestIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="(الزيادة) النقص في قروض طويلة الأجل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncDecInLongTermBorrowings"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncDecInLongTermBorrowings_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="دخل الاستثمارات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InvestmentIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="(الزيادة) النقص في مخزون رأس المال" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncDecInCapitalStocks"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncDecInCapitalStocks_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="دخل الاستثمارات الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_InvestmentIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="(الزيادة) النقص في القروض" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncDecInLoans"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_IncDecInLoans_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل من شركة شقيقة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeFromSisterCompany"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="تأثير أسعار الصرف على النقدية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_EffectOfExchangeRatesOnCash"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_EffectOfExchangeRatesOnCash_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل من شركة شقيقة غير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeFromSisterCompanyNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفقات المالية الأخرى الداخلة (الخارجة)" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherFinInflowOutflow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_OtherFinInflowOutflow_ValueChanged"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </telerik:RadExpander>                            
+                        </StackPanel>
+                        <StackPanel>
+                            <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
+                                <telerik:RadExpander.Header>
+                                    <TextBlock Text="النقد وما يعادله في نهاية الفترة" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                </telerik:RadExpander.Header>
+                                <StackPanel >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="White" Width="250" Text="النقد وما يعادله في نهاية الفترة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput IsEnabled="False" FlowDirection="LeftToRight" Name="txt_CashAndCashEquivalentAtPeriodEnd"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الايرادات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="صافي التغيير في النقد وما يعادله" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetChangeCashAndCashEquivalents"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_NetChangeCashAndCashEquivalents_ValueChanged"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="المصروفات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الايرادات الاخرى الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherIncomeNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="المصروفات الاخرى الغير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherExpenseNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="النقد وما يعادله في بداية الفترة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CashCashEquivalentAtStartOfPeriod"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4" ValueChanged="txt_CashCashEquivalentAtStartOfPeriod_ValueChanged"/>
                                     </StackPanel>
                                 </StackPanel>
                             </telerik:RadExpander>
+                        </StackPanel>
+                        <StackPanel>
                             <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
                                 <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة الدخل قبل بنود XO" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                    <TextBlock Text="عناصر أخرى" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
                                 </telerik:RadExpander.Header>
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل قبل بنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="صافي الربح قبل الضرائب والزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetProfit"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="ضريبة الدخل - الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_IncomeTax"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="مخصصات الضرائب - الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TaxProvision"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="معدل الزكاة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadWatermarkTextBox FlowDirection="LeftToRight" Name="txt_ZakatRate"  telerik:StyleManager.Theme="Expression_Dark" Width="120"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="صافي الدخل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </telerik:RadExpander>
-                            <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
-                                <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة المتفرقات" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                </telerik:RadExpander.Header>
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="اجمالي ارباح نقدية للأسهم الممتازة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashPreferredDividends"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="اجمالي ارباح نقدية للأسهم الممتازة غير اسلامية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashPreferredDividendsNonIslamic"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="التعديلات الاخرى" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OtherAdjustment"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="صافي الدخل المتاح للمساهمين العاديين" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetIncAvailtoCommonShareholders"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="خسارة غير عادية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_AbnormalLoss"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="تأثير الضريبة على الخسارة غير العادية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TaxEffectOnAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل المطبع" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NormalizedIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل الشامل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ComprehensiveIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الدخل الشامل للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ComprehensiveIncomePerShare"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم قبل البنود غير الطبيعية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم قبل البنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="العائد الأساسي للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPS"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="عائد متوسط السهم المرجح" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicWeightedAvgShares"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض قبل البنود غير الطبيعية" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPSBeforeAbnormalItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض قبل البنود XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPSBeforeXOItems"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="عائد السهم المخفض" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedEPS"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="متوسط المرجح للأسهم المخفضة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DilutedWeightedAvgShares"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </telerik:RadExpander>
-                            <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
-                                <telerik:RadExpander.Header>
-                                    <TextBlock Text="قائمة مرجع العناصر" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                </telerik:RadExpander.Header>
-                                <StackPanel>
+                                <StackPanel >
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Foreground="White" Width="250" Text="EBITDA" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_EBITDA"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_EBITDACashFlow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="هامش إجمالي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_GrossMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="صافي النقد المدفوع لعمليات استحواذ" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_NetCashPaidForAcquisitions"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="تعمل الهامش" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_OperatingMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفق النقدي الحر" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_FreeCashFlow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="هامش الربح" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ProfitMargin"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفق النقدي الحر لشركة" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_FreeCashFlowToFirm"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="المبيعات الفعلية لكل موظف" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ActualSalesPerEmployee"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفق النقدي الحر إلى حقوق المساهمين" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_FreeCashFlowToEquity"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="الأرباح الموزعة للسهم" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DividendsPerShare"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفق النقدي الحر للسهم الواحد" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_FreeCashFlowPerBasicShare"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="مجموع ارباح نقدية المشترك" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_TotalCashCommonDividends"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="السعر إلى التدفق النقدي الحر" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_PriceToFreeCashFlow"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="نمو المبيعات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_SalesGrowth"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="عائد السهم الواحد الأساسية قبل النمو XO" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_BasicEPSBeforeXOGrowth"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="إيرادات الفوائد" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_RefInterestIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="رسملة مصروفات الفوائد" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CapitalizedInterestExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="نفقات البحث والتطوير" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_ResearchDevelopmentExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="انخفاض المصروفات" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_DepreciationExpense"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Foreground="White" Width="250" Text="   سجل المؤشر الجزئي" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_PartialRecordIndicator"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12"/>
+                                        <TextBlock Foreground="White" Width="250" Text="التدفق النقدي الى صافي الدخل" FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
+                                        <telerik:RadMaskedCurrencyInput FlowDirection="LeftToRight" Name="txt_CashFlowToNetIncome"  telerik:StyleManager.Theme="Expression_Dark" Width="120"   Culture="ar-SA" TextMode="PlainText" Mask="c12.4"/>
                                     </StackPanel>
                                 </StackPanel>
                             </telerik:RadExpander>
                         </StackPanel>
-                    </telerik:RadExpander>
-                    <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
-                        <telerik:RadExpander.Header>
-                            <TextBlock Text="قائمة الدخل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                        </telerik:RadExpander.Header>
-                        <StackPanel >
-                            <StackPanel Orientation="Horizontal">
-
-                            </StackPanel>
-                        </StackPanel>
-                    </telerik:RadExpander>
-                    <telerik:RadExpander Margin="10" Width="400" telerik:StyleManager.Theme="Expression_Dark" IsExpanded="True">
-                        <telerik:RadExpander.Header>
-                            <TextBlock Text="قائمة الدخل" Margin="10,0,0,0" Foreground="White"  FontSize="15" FontFamily="/FSP.Windows;component/Fonts/#HamzahMateen"/>
-                        </telerik:RadExpander.Header>
-                        <StackPanel >
-                            <StackPanel Orientation="Horizontal">
-
-                            </StackPanel>
-                        </StackPanel>
-                    </telerik:RadExpander>
-                </StackPanel>
+                    </StackPanel>
+                </telerik:RadExpander>
             </StackPanel>
-        </ScrollViewer>
-   
+        </StackPanel>
+    </ScrollViewer>
+
 </UserControl>
