@@ -29,13 +29,13 @@ namespace FSP.Windows.Views.Financial
         {
             InitializeComponent();
         }
-            CompanyDomain companyDomain = new CompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
-            List<Company> companyList = new List<Company>();
-            Dictionary<string, decimal> dataBank = new Dictionary<string, decimal>();
-            MainFinancialDomain mainFinancialDomain = new MainFinancialDomain();
+        CompanyDomain companyDomain = new CompanyDomain(1, Common.Enums.LanguagesEnum.Arabic);
+        List<Company> companyList = new List<Company>();
+        Dictionary<string, decimal> dataBank = new Dictionary<string, decimal>();
+        MainFinancialDomain mainFinancialDomain = new MainFinancialDomain();
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-           
+
             companyList = companyDomain.FindNotFull();
             cmbo_Company.ItemsSource = companyList;
             cmbo_Company.SelectedIndex = 0;
@@ -43,7 +43,7 @@ namespace FSP.Windows.Views.Financial
 
         private void RadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
                 txt_FileName.Text = openFileDialog.FileName;
@@ -60,12 +60,12 @@ namespace FSP.Windows.Views.Financial
         private void PrpareViewData()
         {
             #region Income Statment
-            txt_Revenues.Value =mainFinancialDomain.GetValue( dataBank,"Revenues");
-            txt_CostOfRevenue.Value =mainFinancialDomain.GetValue( dataBank,"Cost of Revenue");
-            txt_SellingGeneral.Value = mainFinancialDomain.GetValue(dataBank,"Selling, General & Admin Expense");
+            txt_Revenues.Value = mainFinancialDomain.GetValue(dataBank, "Revenues");
+            txt_CostOfRevenue.Value = mainFinancialDomain.GetValue(dataBank, "Cost of Revenue");
+            txt_SellingGeneral.Value = mainFinancialDomain.GetValue(dataBank, "Selling, General & Admin Expense");
             txt_GrossProfit.Value = txt_Revenues.Value - txt_CostOfRevenue.Value;
             //txt_OperatingIncome.Value = txt_GrossProfit.Value - txt_SellingGeneral.Value;
-            txt_InterestExpense.Value =mainFinancialDomain.GetValue( dataBank,"Interest Expense");
+            txt_InterestExpense.Value = mainFinancialDomain.GetValue(dataBank, "Interest Expense");
             txt_NetProfitBeforeTax.Value = mainFinancialDomain.GetValue(dataBank, "Pretax Income");
             txt_IncomeTax.Value = mainFinancialDomain.GetValue(dataBank, "Income Tax Expense");
             txt_InterestExpense.Value = mainFinancialDomain.GetValue(dataBank, "Interest Expense");
@@ -142,6 +142,13 @@ namespace FSP.Windows.Views.Financial
             txt_CashAndCashEquivalentAtPeriodEnd.Value =
               txt_NetChangeCashAndCashEquivalents.Value +
               txt_CashCashEquivalentAtStartOfPeriod.Value;
+
+            txt_CashAndCashEquivalent.Value = mainFinancialDomain.GetValue(dataBank, "Cash & Near Cash Items");
+            txt_ShortTermInvestments.Value = mainFinancialDomain.GetValue(dataBank, "Short-Term Investments");
+            txt_NetReceivables.Value = mainFinancialDomain.GetValue(dataBank, "Accounts & Notes Receivable");
+            txt_Inventories.Value = mainFinancialDomain.GetValue(dataBank, "Inventories");
+            txt_OtherCurrentAssets.Value = mainFinancialDomain.GetValue(dataBank, "Other Current Assets");
+            txt_TotalCurrentAssets.Value = mainFinancialDomain.GetValue(dataBank, "Total Current Assets");
             #endregion
         }
         #region Income Statment Calculations
@@ -291,7 +298,7 @@ namespace FSP.Windows.Views.Financial
                 txt_TaxAndZakatPaid.Value +
                 txt_MovementonWoekingCapital.Value +
                 txt_ChangeInOperatingActivities.Value +
-                txt_ChangeInProvisions.Value+
+                txt_ChangeInProvisions.Value +
                 txt_OthersCashFlow.Value +
                 txt_OtherNonCashAdjustments.Value +
                 txt_ChangesInNonCashCapital.Value;
@@ -459,6 +466,113 @@ namespace FSP.Windows.Views.Financial
         }
 
         #endregion
+
+        private void CashAndCahsEquilventCalculation()
+        {
+            txt_CashAndCashEquivalent.Value =
+                txt_Cash.Value +
+                txt_DueAmountFromRelatedParties.Value +
+                txt_CashEquivalentConventional.Value +
+                txt_CashCollateral.Value +
+                txt_TimeDepositIslamic.Value +
+                txt_TimeDepositConventional.Value;
+        }
+
+        private void txt_Cash_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void txt_DueAmountFromRelatedParties_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void txt_CashEquivalentConventional_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void txt_CashCollateral_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void txt_TimeDepositIslamic_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void txt_TimeDepositConventional_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            CashAndCahsEquilventCalculation();
+        }
+
+        private void ShortTermInvestmentCalc()
+        {
+            txt_ShortTermInvestments.Value =
+                txt_MoneyMarketFundIslamicMMFI.Value +
+                txt_MoneyMarketFundConventionalMMFC.Value +
+                txt_ConventionalBonds.Value +
+                txt_Sukuk.Value;
+        }
+
+        private void txt_MoneyMarketFundIslamicMMFI_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ShortTermInvestmentCalc();
+        }
+
+        private void txt_MoneyMarketFundConventionalMMFC_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ShortTermInvestmentCalc();
+        }
+
+        private void txt_ConventionalBonds_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ShortTermInvestmentCalc();
+        }
+
+        private void txt_Sukuk_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ShortTermInvestmentCalc();
+        }
+
+        private void txt_AccountsReceivables_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            txt_NetReceivables.Value =
+                txt_AccountsReceivables.Value +
+                txt_ProvisionForDoubtfulReceivables.Value +
+                txt_OtherReceivables.Value;
+        }
+
+        private void txt_ProvisionForDoubtfulReceivables_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            txt_NetReceivables.Value =
+               txt_AccountsReceivables.Value +
+               txt_ProvisionForDoubtfulReceivables.Value +
+               txt_OtherReceivables.Value;
+        }
+
+        private void txt_OtherReceivables_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            txt_NetReceivables.Value =
+               txt_AccountsReceivables.Value +
+               txt_ProvisionForDoubtfulReceivables.Value +
+               txt_OtherReceivables.Value;
+        }
+
+        private void txt_AdvancedPaymentsToSuppliers_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+           txt_CurrentReceivables.Value= txt_Inventories.Value + txt_OtherCurrentAssets.Value;
+           txt_Inventories.Value = txt_AdvancedPaymentsToSuppliers.Value;
+        }
+
+        private void txt_OtherCurrentAssetsNonIslamic_ValueChanged(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            txt_OtherCurrentAssets.Value = txt_OtherCurrentAssetsNonIslamic.Value;
+            txt_TotalCurrentAssets.Value = txt_CurrentReceivables.Value + txt_NetReceivables.Value
+                + txt_ShortTermInvestments.Value + txt_CashAndCashEquivalent.Value;
+        }
 
     }
 }
